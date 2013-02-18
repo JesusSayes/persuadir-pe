@@ -1,0 +1,39 @@
+!!! 5
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %meta{:content => "", :name => "author"}
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    /[if IE 7]
+      = stylesheet_link_tag "font-awesome-ie7", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    -# %meta{:content => "TQhZO-bOCns60KLjEmBkNhI2WxncnabfqWCss5scuB0", :name => "google-site-verification"}
+    = favicon_link_tag
+    - if content_for?(:head)
+      = yield(:head)
+    - else
+      -# %title= "Persuadir | #{SEO_TITLE}"
+      %title= "Persuadir | "
+      %meta{name:"description", content:""}
+      -# %meta{name:"description", content:SEO_DESCRIPTION}
+  %body
+    %header
+      .container
+        = render partial: "layouts/header"
+
+    #main{:role => "main"}
+      .container
+        -# = render 'layouts/messages'
+        .row-fluid
+          .column-left.span3
+            = render :partial => "layouts/left"
+          .column-right.span9
+            = content_for?(:content) ? yield(:content) : yield
+
+    %footer
+      .container
+        -# = render 'layouts/footer'

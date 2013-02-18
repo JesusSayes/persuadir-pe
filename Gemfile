@@ -36,3 +36,11 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'jquery-ui-rails'
+gem 'haml-rails'
+gem 'simple_form'
+gem 'bootstrap-sass'
+gem "cancan"
+gem "mini_magick"
+gem "carrierwave"
+gem 'tinymce-rails'
