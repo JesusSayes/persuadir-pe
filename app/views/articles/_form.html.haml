@@ -15,10 +15,12 @@
         = f.input :summary, :input_html => {:class => "tinymce span11"}
       .field
         = f.input :content, :input_html => {:class => "tinymce span11"}
-      .field
-        = f.input :menu, :collection=>2..6
+      -# .field
+        -# = f.input :menu, :collection=>2..6
       .field
         = f.input :public
+      .field
+        = f.input :tag_id, :collection=>Tag.all
       .actions
         = f.button :submit
       = tinymce

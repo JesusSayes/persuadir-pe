@@ -2,9 +2,21 @@
   %ul
     %li.dropdown
       = link_to "Inicio", root_path
-    - Article.in_menu.each do |article|
-      %li
-        = link_to "#{article.title}", article
+    - Tag.all.each do |tag|
+      - if tag.articles.count == 1
+        %li
+          = link_to "#{tag.title}", tag.articles.each{|a| a}
+      - elsif tag.articles.count > 1
+        %li.dropdown
+          = link_to "#", {:class=>"dropdown-toggle", :"data-toggle"=>"dropdown"} do
+            = tag.title
+            %b.caret
+          %ul.dropdown-menu
+            - tag.articles.each do |article|
+              %li= link_to article, article
+      - else
+        %li
+          = link_to "#{tag.title}", "#"
     -# <a id="drop4" class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
     -# %li Capacitación
     -# %li Consultoría
