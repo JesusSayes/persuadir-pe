@@ -44,3 +44,9 @@ gem "cancan"
 gem "mini_magick"
 gem "carrierwave"
 gem 'tinymce-rails'
+gem "devise"
+
+group :development do
+  gem "hpricot"
+  gem "ruby_parser"
+end
