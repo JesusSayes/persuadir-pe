@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20130218220841) do
     t.string   "title"
     t.text     "summary"
     t.text     "content"
-    t.boolean  "menu"
+    t.integer  "menu"
     t.boolean  "public"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

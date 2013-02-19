@@ -1,9 +1,14 @@
-%ul
-  %li Inicio
-  %li Nosotros
-  %li Capacitación
-  %li Consultoría
-  %li Herramientas de Diagnóstico
-  %li Clientes
-  %li Contáctenos
-  %li Links
+.dropdown
+  %ul
+    %li.dropdown
+      = link_to "Inicio", root_path
+    - Article.in_menu.each do |article|
+      %li
+        = link_to "#{article.title}", article
+    -# <a id="drop4" class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+    -# %li Capacitación
+    -# %li Consultoría
+    -# %li Herramientas de Diagnóstico
+    -# %li Clientes
+    -# %li Contáctenos
+    -# %li Links

@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :summary
       t.text :content
-      t.boolean :menu
+      t.integer :menu
       t.boolean :public
 
       t.timestamps
