@@ -1,6 +1,10 @@
 PersuadirPe::Application.routes.draw do
 
-  resources :slides
+  resources :images
+
+  resources :slides do
+    resources :images
+  end
 
   devise_for :users #, :controllers => { :registrations => 'registrations'}
   resources :users, :only => [:index, :new, :edit, :update, :destroy, :create]

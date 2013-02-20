@@ -10,6 +10,9 @@
   %b Public:
   = @slide.public
 
+= link_to "Agregar Imagen", new_slide_image_path(@slide), :class=>"btn btn-primary"
+
+%br
 = link_to 'Edit', edit_slide_path(@slide)
 \|
 = link_to 'Back', slides_path
