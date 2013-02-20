@@ -2,15 +2,26 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-
-.column-left{
-  ul{
-    list-style-type: none;
-    li{
-      text-decoration:none;
+header{
+  .container{
+    .user-nav{
+      ul.dropdown{
+        li.horizontal{
+          float: left;
+          padding: 5px 10px;
+        }
+      }
     }
   }
 }
+// .column-left{
+ul{
+  list-style-type: none;
+  li{
+    text-decoration:none;
+  }
+}
+// }
 .column-right{
   font-family: Arial,Helvetica,sans-serif;
   h1{

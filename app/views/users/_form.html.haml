@@ -1,0 +1,13 @@
+= simple_form_for(@user) do |f|
+  -# = render "shared/error_messages", :target=>@user
+
+  .form-inputs
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation, :hint=>( @user.new_record? ? nil : "Dejar en blanco la clave si no va a cambiarla")
+
+    - if current_user.admin?
+      = f.input :admin
+
+  .form-actions
+    = f.button :submit

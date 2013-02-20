@@ -9,6 +9,7 @@ class Ability
       can :manage, User, :id => user.id
       can :read, Article
       cannot :index, Article
+      cannot :index, User
     end
   end
 end

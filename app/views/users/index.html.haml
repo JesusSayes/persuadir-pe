@@ -1,0 +1,16 @@
+%h1 Listado de Usuarios
+
+= link_to "New User", new_user_path
+
+%table.table.table-striped
+  %tr
+    %th Email
+    %th Usuario
+    %th
+  - @users.each do |user|
+    %tr
+      %td= user.email
+      %td= user.email
+      %td
+        = link_to "Editar", edit_user_path(user)
+        = link_to "Eliminar", user, :method=>:delete, :data=>{confirm: "Are you sure?"}
