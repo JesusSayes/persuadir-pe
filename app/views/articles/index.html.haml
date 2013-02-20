@@ -1,5 +1,7 @@
 %h1 Listing articles
 
+= new_tool Article
+%br
 %table.table.table-striped
   %tr
     %th Title
@@ -8,8 +10,6 @@
     %th Menu
     %th Public
     %th
-    %th
-    %th
 
   - @articles.each do |article|
     %tr
@@ -17,11 +17,6 @@
       %td= article.summary
       %td= article.content
       %td= article.menu
-      %td= article.public
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= tick article.public
+      %td= user_tools article, false
 
-%br
-
-= link_to 'New Article', new_article_path

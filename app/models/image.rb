@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   attr_accessible :description, :image, :imageable_id, :imageable_type, :link, :title, :user_id
   belongs_to :imageable, :polymorphic => true
   belongs_to :slide
+  belongs_to :user
 
   mount_uploader :image, ImageUploader
 

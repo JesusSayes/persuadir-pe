@@ -1,21 +1,17 @@
 %h1 Listing tags
 
-%table
+= new_tool Tag
+%br
+
+%table.table.table-striped
   %tr
     %th Title
     %th Description
-    %th
-    %th
     %th
 
   - @tags.each do |tag|
     %tr
       %td= tag.title
       %td= tag.description
-      %td= link_to 'Show', tag
-      %td= link_to 'Edit', edit_tag_path(tag)
-      %td= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= user_tools tag, false
 
-%br
-
-= link_to 'New Tag', new_tag_path

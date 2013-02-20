@@ -12,5 +12,9 @@
       %td= user.email
       %td= user.email
       %td
-        = link_to "Editar", edit_user_path(user)
-        = link_to "Eliminar", user, :method=>:delete, :data=>{confirm: "Are you sure?"}
+        = link_to edit_user_path(user), :class=>"btn btn-small" do
+          %i.icon-edit
+          Modificar
+        = link_to user, :method=>:delete, :data=>{confirm: "Are you sure?"}, :class=>"btn btn-small btn-danger" do
+          %i.icon-remove.icon-white
+          Eliminar

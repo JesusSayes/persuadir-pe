@@ -1,10 +1,14 @@
-= simple_form_for(@image) do |f|
+= simple_form_for([@imageable, @image]) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :title
     = f.input :description
     = f.input :image
+    - if @image.image?
+      %p
+        %strong Miniatura:
+        .imagen= image_tag @image.image_url(:thumb)
     -# = f.input :imageable_id
     -# = f.input :imageable_type
     -# = f.input :user_id
