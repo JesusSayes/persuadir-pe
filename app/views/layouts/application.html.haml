@@ -22,11 +22,11 @@
       -# %meta{name:"description", content:SEO_DESCRIPTION}
   %body
     %header
-      .container
+      .container#header
         = render partial: "layouts/header"
 
     #main{:role => "main"}
-      .container
+      .container#body
         = render 'layouts/messages'
         .row-fluid
           .column-left.span3
@@ -35,5 +35,5 @@
             = content_for?(:content) ? yield(:content) : yield
 
     %footer
-      .container
-        -# = render 'layouts/footer'
+      .container#footer
+        = render 'layouts/footer'

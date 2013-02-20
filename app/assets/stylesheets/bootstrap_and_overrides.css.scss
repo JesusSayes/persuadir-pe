@@ -1,37 +1,100 @@
+
+@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins";
+
 @import "bootstrap";
-body { padding-top: 60px; }
+body { padding-top: 20px; }
 @import "bootstrap-responsive";
 
-header{
-  .container{
-    .user-nav{
-      ul.dropdown{
-        li.horizontal{
-          float: left;
-          padding: 5px 10px;
+
+body{
+  #header, #body, #footer{
+    max-width: 940px;
+  }
+  font-family: Arial,Helvetica,sans-serif;
+  header{
+    .container{
+      .user-nav{
+        ul.dropdown{
+          li.horizontal{
+            float: left;
+            padding: 5px 10px;
+          }
         }
       }
     }
   }
-}
-// .column-left{
-ul{
-  list-style-type: none;
-  li{
-    text-decoration:none;
+  // .column-left{
+  ul{
+    list-style-type: none;
+    font-family: Arial,Helvetica,sans-serif;
+    li{
+      text-decoration:none;
+      &.item-menu{
+        padding: 5px 0 8px;
+        border-bottom: 1px solid #999999;
+        font-size: 14px;
+      }
+    }
   }
-}
-// }
-.column-right{
-  font-family: Arial,Helvetica,sans-serif;
-  h1{
-    font-size: 28px;
-    font-weight: lighter;
-    color: black;
+  // }
+  .column-right{
+    h1{
+      font-size: 28px;
+      font-weight: lighter;
+      color: black;
+    }
+    .body-article{
+      border: 1px solid #888888;
+      font-size: 12px;
+      color: #666666;
+    }
+    .home-well2{
+      height: 90px;
+      padding-right: 9px;
+      .box-vertical-divider{
+        font-size: 12px;
+        margin-right: -4px;
+        padding-left: 10px;
+      }
+      .social{
+        border-left: 2px solid #E3E3E3;
+        padding: 20px 0 10px 10px;
+        height: 130px;
+        margin-top: -20px;
+        margin-bottom: -20px;
+      }
+    }
+    .home-well3{
+      padding-right: 9px;
+      border: 1px solid #E3E3E3;
+      min-height: 344px;
+      // margin-right: 12px;
+      .home-servicios{
+        border-left: 2px solid #E3E3E3;
+        background-color: #A7AA9D;
+        margin-top: -20px;
+        margin-bottom: -20px;
+        margin-right: -10px;
+        padding-top: 20px;
+        background: linear-gradient(#BBC0B9, #A7AA9D, #A7AA9D);
+        .home-servicio{
+          text-align: center;
+          padding-bottom: 15px;
+        }
+        .lin-gris{
+          background-image: image-url("lin_gris.jpg");
+          background-repeat: no-repeat;
+          height: 6px;
+          width: 122px;
+          margin: 0 auto;
+        }
+      }
+    }
   }
-  .body-article{
-    border: 1px solid #888888;
-    font-size: 12px;
-    color: #666666;
+  footer{
+    #footer{
+      margin-top: 40px;
+    }
   }
 }

@@ -1,0 +1,16 @@
+#myCarousel.carousel.slide.well
+
+  <!-- Carousel items -->
+  .carousel-inner
+    - Slide.in_home.each do |slide|
+      - if slide.images.count > 0
+        - slide.images.each_with_index do |image, index|
+          - activo = index==0 ? "active" : ""
+          .item{:class=>"#{activo}"}
+            = image_tag image.image_url(:larger)
+  <!-- Carousel nav -->
+  -#= link_to "carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  = link_to "#myCarousel", :class=>"carousel-control left", :"data-slide"=>"prev" do
+    &lsaquo;</a>
+  = link_to "#myCarousel", :class=>"carousel-control right", :"data-slide"=>"next" do
+    &rsaquo;</a>
