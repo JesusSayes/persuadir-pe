@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :title
     = f.input :description
+    = f.input :parent_id, :collection=>@tag_ancestry
 
   .form-actions
     = f.button :submit

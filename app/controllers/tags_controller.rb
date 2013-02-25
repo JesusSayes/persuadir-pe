@@ -25,6 +25,7 @@ class TagsController < ApplicationController
   # GET /tags/new.json
   def new
     @tag = Tag.new
+    @tag_ancestry = ancestry_options(Tag.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class TagsController < ApplicationController
   # GET /tags/1/edit
   def edit
     @tag = Tag.find(params[:id])
+    @tag_ancestry = ancestry_options(Tag.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
   end
 
   # POST /tags
@@ -80,4 +82,5 @@ class TagsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

@@ -20,7 +20,7 @@
       .field
         = f.input :public
       .field
-        = f.input :tag_id, :collection=>Tag.all
+        = f.input :tag_id, :collection=>@tag_ancestry
       .actions
         = f.button :submit
       = tinymce

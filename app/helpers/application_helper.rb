@@ -1,10 +1,10 @@
 # coding: utf-8
 module ApplicationHelper
 
-  def user_tools(object, back=true, options={})
+  def user_tools(object, back=true, options={:text=>true})
     obj = object.is_a?(Array) ? object.last : object
     texto = {:modificar=>" Modificar", :mostrar=>" Mostrar", :eliminar=>" Eliminar"}
-    if !options["text"]
+    if !options[:text]
       texto = {:modificar=>"", :mostrar=>"", :eliminar=>""}
     end
     if can? :manage, obj

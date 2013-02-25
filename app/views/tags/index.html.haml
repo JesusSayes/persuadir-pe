@@ -5,13 +5,32 @@
 
 %table.table.table-striped
   %tr
-    %th Title
+    %th{:colspan=>2} Title
     %th Description
+    %th Articles
     %th
 
-  - @tags.each do |tag|
+  - Tag.roots.each do |tag|
     %tr
-      %td= tag.title
+      %td{:colspan=>2}= tag.title
       %td= tag.description
-      %td= user_tools tag, false
-
+      %td
+        - if tag.articles.count > 0
+          %div
+            - tag.articles.each do |article|
+              = link_to article do
+                = truncate_words("#{article.title}", 2)
+      %td= user_tools tag, false, {:text=>false}
+    - if tag.has_children?
+      - tag.children.each do |children_tag|
+        %tr
+          %td
+            %td= " - #{children_tag.title}"
+          %td= children_tag.description
+          %td
+            - if children_tag.articles.count > 0
+              - children_tag.articles.each do |article|
+                %div
+                  = link_to article do
+                    = truncate_words "#{article.title}", 2
+          %td= user_tools children_tag, false, {:text=>false}

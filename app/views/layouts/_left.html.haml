@@ -1,26 +1,39 @@
-.dropdown
-  %ul
-    %li.dropdown.item-menu
-      = link_to "Inicio", root_path
-    - Tag.all.each do |tag|
-      - if tag.articles.count == 1
-        %li.item-menu
-          = link_to "#{tag.title}", tag.articles.each{|a| a}
-      - elsif tag.articles.count > 1
-        %li.dropdown.item-menu
-          = link_to "#", {:class=>"dropdown-toggle", :"data-toggle"=>"dropdown"} do
+.accordion#accordion1
+  .accordion-group
+    .accordion-heading
+      = link_to "Inicio", root_path, :class=>"accordion-toggle"
+    .accordion-body.collapse
+      .accordion-inner
+
+  - Tag.roots.each do |tag|
+    .accordion-group
+      .accordion-heading
+        - tiene_tags = tag.has_children? ? true : false
+        - if tiene_tags
+          = link_to "#collapse#{tag.id}", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"} do
             = tag.title
-            %b.caret
-          %ul.dropdown-menu
-            - tag.articles.each do |article|
-              %li= link_to article, article
+            %i.icon-chevron-right
+        - else
+          = link_to "#{tag.title}", "#", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
+      - if tiene_tags
+        .accordion-body.collapse{:id=>"collapse#{tag.id}"}
+          .accordion-inner.tag-children
+            - tag.children.each do |children_tag|
+              .item-menu
+                - if children_tag.articles.count == 1
+                  = link_to "#{children_tag.title}", children_tag.articles.first
+                - elsif children_tag.articles.count > 1
+                  .dropdown
+                    = link_to "#", {:class=>"dropdown-toggle", :"data-toggle"=>"dropdown"} do
+                      = children_tag.title
+                      %b.caret
+                    %ul.dropdown-menu
+                      - children_tag.articles.each do |article|
+                        %li= link_to article, article
+                - else
+                  = link_to "#{children_tag.title}"
       - else
-        %li.item-menu
-          = link_to "#{tag.title}", "#"
-    -# <a id="drop4" class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
-    -# %li Capacitación
-    -# %li Consultoría
-    -# %li Herramientas de Diagnóstico
-    -# %li Clientes
-    -# %li Contáctenos
-    -# %li Links
+        .accordion-body.collapse
+          .accordion-inner
+
+

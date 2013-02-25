@@ -45,6 +45,7 @@ gem "mini_magick"
 gem "carrierwave"
 gem 'tinymce-rails'
 gem "devise"
+gem "ancestry"
 
 group :development do
   gem "hpricot"
