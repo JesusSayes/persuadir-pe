@@ -6,7 +6,7 @@
     = f.input :password
     = f.input :password_confirmation, :hint=>( @user.new_record? ? nil : "Dejar en blanco la clave si no va a cambiarla")
 
-    - if current_user.admin?
+    - if user_signed_in? and current_user.admin?
       = f.input :admin
 
   .form-actions

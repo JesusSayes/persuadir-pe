@@ -9,17 +9,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    if current_user.admin?
-      @user = User.new(params[:user])
-      #@user.skip_confirmation!
-      if @user.save
+    # if current_user.admin?
+    @user = User.new(params[:user])
+    #@user.skip_confirmation!
+    if @user.save
+      if @user.admin?
         redirect_to users_path, notice: 'El usuario ha sido creado.'
       else
-        render action: "new"
+        redirect_to root_path, notice: 'El usuario ha sido creado.'
       end
     else
-      redirect_to users_path, alert: "No puede crear usuarios"
+      render action: "new"
     end
+    # else
+      # redirect_to users_path, alert: "No puede crear usuarios"
+    # end
 
   end
 

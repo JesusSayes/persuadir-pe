@@ -14,9 +14,9 @@
   - @articles.each do |article|
     %tr
       %td= article.title
-      %td= article.summary
-      %td= article.content
-      %td= article.menu
+      %td= truncate_words article.summary.html_safe, 5
+      %td= truncate_words article.content.html_safe, 8
+      %td= tick article.menu
       %td= tick article.public
-      %td= user_tools article, false
+      %td= user_tools article, false, {"texto"=>false}
 
