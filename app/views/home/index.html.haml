@@ -26,6 +26,8 @@
 
 .well.home-well3
   .span9
+    .home-noticias
+      = render :partial => "notices/notice", :collection => @notices
   .span3
     .home-servicios
       .home-servicio

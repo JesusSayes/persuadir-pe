@@ -6,14 +6,21 @@
     = f.input :title, :input_html => {:class => "span11"}
     = f.input :summary, :input_html => {:class => "tinymce span11", :style => "height: 250px;"}
     = f.input :content, :input_html => {:class => "tinymce span11"}
+    %br
     = f.input :public
     = f.input :type_notice, :collection => Notice::TYPE_NOTICE
     = f.input :publication_date
     = f.input :image
-    - if @notice.image?
-      %p
-        %strong Minuatura:
-        .imagen= image_tag @notice.image_url(:thumb)
+    .row-fluid
+      - if @notice.image?
+        .span3
+          %strong Portada:
+          .imagen= image_tag @notice.image_url(:thumb)
+      - if @notice.images.count > 0
+        .span9
+          .alert-info.pull-right
+            %p
+            = link_to "Imágenes en la derecha (#{@notice.images.count})", notice_images_path(@notice), :class=>""
 
   .form-actions
     = f.button :submit

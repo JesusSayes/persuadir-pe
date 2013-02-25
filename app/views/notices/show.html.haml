@@ -1,3 +1,5 @@
+- if user_signed_in? and current_user.admin?
+  - administrar = true
 .notice-show
   %p
     = @notice.publication_date.strftime("%d-%m-%Y")
@@ -5,6 +7,8 @@
     .span9
       %h1= @notice.title
     .span3
+      - if administrar
+        = user_tools @notice, false, {:text=>false}
   .row-fluid
     .span9
       %p
@@ -13,6 +17,9 @@
       %p
         = @notice.content.html_safe
     .span3
+      - if administrar
+        = link_to "Agregar Imagen", new_notice_image_path(@notice), :class=>"btn btn-primary"
+        %p
       - if @notice.images.count > 0
         - @notice.images.each do |image|
           .notice-image
@@ -21,5 +28,3 @@
             .description
               = image.description.html_safe
 
-  - if user_signed_in? and current_user.admin?
-    = link_to "Agregar Imagen", new_notice_image_path(@notice), :class=>"btn btn-primary"

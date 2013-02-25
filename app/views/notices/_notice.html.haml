@@ -1,0 +1,9 @@
+.row-fluid
+  .span1.notice-date.pull-left
+    = notice.publication_date.strftime("%B %d")
+  .span2.notice-image.pull-left
+    = image_tag notice.image_url(:thumb)
+  .span9.notice-content.pull-left
+    %h4= notice.title
+    %p
+      = truncate_words notice.summary, 10

@@ -5,4 +5,7 @@ class Notice < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   TYPE_NOTICE = ["Noticia", "Artículo"]
+
+  scope :published, where(:public=>true).order(:publication_date)
+
 end
