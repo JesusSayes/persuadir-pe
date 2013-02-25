@@ -1,5 +1,7 @@
 PersuadirPe::Application.routes.draw do
 
+  resources :notices
+
   resources :images
 
   resources :slides do

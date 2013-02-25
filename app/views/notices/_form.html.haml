@@ -1,0 +1,14 @@
+= simple_form_for(@notice) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :summary
+    = f.input :content
+    = f.input :public
+    = f.input :type
+    = f.input :publication_date
+    = f.input :imagen
+
+  .form-actions
+    = f.button :submit
