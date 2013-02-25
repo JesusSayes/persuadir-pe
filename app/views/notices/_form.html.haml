@@ -1,14 +1,21 @@
+= tinymce_assets
 = simple_form_for(@notice) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :title
-    = f.input :summary
-    = f.input :content
+    = f.input :title, :input_html => {:class => "span11"}
+    = f.input :summary, :input_html => {:class => "tinymce span11", :style => "height: 250px;"}
+    = f.input :content, :input_html => {:class => "tinymce span11"}
     = f.input :public
-    = f.input :type
+    = f.input :type_notice, :collection => Notice::TYPE_NOTICE
     = f.input :publication_date
-    = f.input :imagen
+    = f.input :image
+    - if @notice.image?
+      %p
+        %strong Minuatura:
+        .imagen= image_tag @notice.image_url(:thumb)
 
   .form-actions
     = f.button :submit
+
+= tinymce

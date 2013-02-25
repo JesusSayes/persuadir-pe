@@ -5,9 +5,9 @@ class CreateNotices < ActiveRecord::Migration
       t.text :summary
       t.text :content
       t.boolean :public
-      t.string :type
+      t.string :type_notice
       t.datetime :publication_date
-      t.string :imagen
+      t.string :image
 
       t.timestamps
     end

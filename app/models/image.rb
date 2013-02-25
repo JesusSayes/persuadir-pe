@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
   belongs_to :imageable, :polymorphic => true
   belongs_to :slide
   belongs_to :user
+  belongs_to :notice
 
   mount_uploader :image, ImageUploader
 

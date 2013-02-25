@@ -14,7 +14,7 @@
             %li= link_to "Páginas", articles_path
             %li= link_to "Usuarios", users_path
             %li= link_to "Slides", slides_path
-            %li= link_to "Noticias", notices_path
+            %li= link_to "Noticias - Artículos", notices_path
       %li.horizontal= link_to 'Sign out', destroy_user_session_path, :method => :delete
   - else
     = link_to 'Sign up', new_user_path

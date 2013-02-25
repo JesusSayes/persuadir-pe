@@ -1,6 +1,8 @@
 PersuadirPe::Application.routes.draw do
 
-  resources :notices
+  resources :notices do
+    resources :images
+  end
 
   resources :images
 

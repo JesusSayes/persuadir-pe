@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20130225070417) do
     t.text     "summary"
     t.text     "content"
     t.boolean  "public"
-    t.string   "type"
+    t.string   "type_notice"
     t.datetime "publication_date"
-    t.string   "imagen"
+    t.string   "image"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

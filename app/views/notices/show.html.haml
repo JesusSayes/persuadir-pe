@@ -1,27 +1,25 @@
-%p#notice= notice
+.notice-show
+  %p
+    = @notice.publication_date.strftime("%d-%m-%Y")
+  .row-fluid
+    .span9
+      %h1= @notice.title
+    .span3
+  .row-fluid
+    .span9
+      %p
+        = @notice.summary.html_safe
 
-%p
-  %b Title:
-  = @notice.title
-%p
-  %b Summary:
-  = @notice.summary
-%p
-  %b Content:
-  = @notice.content
-%p
-  %b Public:
-  = @notice.public
-%p
-  %b Type:
-  = @notice.type
-%p
-  %b Publication date:
-  = @notice.publication_date
-%p
-  %b Imagen:
-  = @notice.imagen
+      %p
+        = @notice.content.html_safe
+    .span3
+      - if @notice.images.count > 0
+        - @notice.images.each do |image|
+          .notice-image
+            .image
+              = image_tag image.image
+            .description
+              = image.description.html_safe
 
-= link_to 'Edit', edit_notice_path(@notice)
-\|
-= link_to 'Back', notices_path
+  - if user_signed_in? and current_user.admin?
+    = link_to "Agregar Imagen", new_notice_image_path(@notice), :class=>"btn btn-primary"
