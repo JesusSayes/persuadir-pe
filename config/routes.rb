@@ -1,5 +1,7 @@
 PersuadirPe::Application.routes.draw do
 
+  resources :consultants
+
   resources :notices do
     resources :images
   end
