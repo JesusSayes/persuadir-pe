@@ -1,25 +1,8 @@
-%h1 Listing consultants
-
-%table
-  %tr
-    %th Name
-    %th Charge
-    %th Description
-    %th Image
-    %th
-    %th
-    %th
-
-  - @consultants.each do |consultant|
-    %tr
-      %td= consultant.name
-      %td= consultant.charge
-      %td= consultant.description
-      %td= consultant.image
-      %td= link_to 'Show', consultant
-      %td= link_to 'Edit', edit_consultant_path(consultant)
-      %td= link_to 'Destroy', consultant, method: :delete, data: { confirm: 'Are you sure?' }
-
+.row-fluid
+  .pull-left
+    %h1 Consultores
+  .pull-right
+    %br
+    = new_tool Consultant
 %br
-
-= link_to 'New Consultant', new_consultant_path
+= render :partial => "consultant", :collection => @consultants

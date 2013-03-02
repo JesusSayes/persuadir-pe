@@ -1,0 +1,11 @@
+.row-fluid
+  .row-fluid
+    .consultant-name.span3
+      %h3= consultant.name
+      = user_tools consultant, false, {:text=>false}
+    .consultant-description.span9
+      = consultant.description.html_safe
+  %p
+    - if consultant.image?
+      = image_tag consultant.image
+

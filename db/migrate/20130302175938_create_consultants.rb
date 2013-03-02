@@ -4,6 +4,7 @@ class CreateConsultants < ActiveRecord::Migration
       t.string :name
       t.string :charge
       t.text :description
+      t.boolean :public
       t.string :image
 
       t.timestamps

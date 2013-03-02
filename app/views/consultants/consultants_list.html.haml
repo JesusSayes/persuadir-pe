@@ -1,0 +1,25 @@
+%h1 Consultores
+
+= new_tool Consultant
+%br
+- if user_signed_in? and current_user.admin?
+  %table.table.table-striped
+    %tr
+      %th Name
+      %th Charge
+      %th Description
+      %th Public
+      %th Image
+      %th
+
+    - @consultants.each do |consultant|
+      %tr
+        %td= consultant.name
+        %td= consultant.charge
+        %td= truncate_words consultant.description.html_safe, 15
+        %td= tick consultant.public
+        %td= consultant.image
+        %td= user_tools consultant, false, {:text=>false}
+
+- else
+  = render :partial => "consultant", :collection => @consultants

@@ -1,11 +1,20 @@
+= tinymce_assets
 = simple_form_for(@consultant) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :charge
-    = f.input :description
+    = f.input :name, :input_html => {:class => "span11"}
+    = f.input :charge, :input_html => {:class => "span11"}
+    = f.input :description, :input_html => {:class => "tinymce span11"}
+    %br
+    = f.input :public
     = f.input :image
+    .row-fluid
+      - if @consultant.image?
+        .span3
+          %strong Imagen:
+          .imagen= image_tag @consultant.image_url(:thumb)
 
   .form-actions
     = f.button :submit
+= tinymce
