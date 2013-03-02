@@ -1,6 +1,6 @@
 = render :partial => "layouts/carousel"
 
-.well.home-well2
+-# .well.home-well2
   .span6.eventos
     Listado de Eventos
   -# .span6.sociales
@@ -26,9 +26,38 @@
 
 .well.home-well3
   .span9
-    .home-noticias
+    .home-notices
+      .title.row-fluid
+        .pull-left.orange
+          %h3 Noticias
+        .pull-right
+          = link_to notices_path do
+            Más noticias
+            .badge
+              %i.icon-plus.icon-white
       = render :partial => "notices/notice", :collection => @notices
   .span3
+    .social
+      SIGUENOS EN
+      %p
+      %div
+        = link_to "http://www.youtube.com/user/ciccambridge1" do
+          = image_tag "bt_tube.jpg"
+          Youtube
+      %div
+        = link_to "http://www.facebook.com/group.php?gid=39693429965" do
+          = image_tag "bt_facebook.jpg"
+          Facebook
+      %div
+        = link_to "https://twitter.com/CIC_Cambridge" do
+          = image_tag "bt_twitter.jpg"
+          Twitter
+    .social
+      NUESTROS CLIENTES
+      %p
+      = image_tag "polar.png"
+
+  -# .span3
     .home-servicios
       .home-servicio
         = link_to "#" do

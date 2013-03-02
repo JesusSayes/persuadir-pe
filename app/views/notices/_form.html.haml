@@ -11,6 +11,7 @@
     = f.input :type_notice, :collection => Notice::TYPE_NOTICE
     = f.input :publication_date
     = f.input :image
+    = f.input :description_image, :input_html => {:rows=>"4"}
     .row-fluid
       - if @notice.image?
         .span3

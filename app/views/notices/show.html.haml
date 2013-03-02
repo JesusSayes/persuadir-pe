@@ -1,7 +1,7 @@
 - if user_signed_in? and current_user.admin?
   - administrar = true
 .notice-show
-  %p
+  .orange
     = @notice.publication_date.strftime("%d-%m-%Y")
   .row-fluid
     .span9
@@ -17,10 +17,16 @@
       %p
         = @notice.content.html_safe
     .span3
-      - if administrar
+      -# - if administrar
         = link_to "Agregar Imagen", new_notice_image_path(@notice), :class=>"btn btn-primary"
         %p
-      - if @notice.images.count > 0
+      - if @notice.image?
+        .notice-image
+          .image
+            = image_tag @notice.image
+          .description
+            = @notice.description_image
+      -# - if @notice.images.count > 0
         - @notice.images.each do |image|
           .notice-image
             .image
