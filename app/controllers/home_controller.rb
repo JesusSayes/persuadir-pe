@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @notices = Notice.published
+    @notices_home = Notice.published.limit(3)
   end
 end

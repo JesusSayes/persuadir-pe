@@ -6,6 +6,6 @@ class Notice < ActiveRecord::Base
 
   TYPE_NOTICE = ["Noticia", "Artículo"]
 
-  scope :published, lambda{where(:public=>true).order(:publication_date)}
+  scope :published, lambda{where(:public=>true).order("publication_date DESC")}
 
 end

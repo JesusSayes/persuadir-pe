@@ -3,7 +3,7 @@
 = new_tool Notice
 %p
 
-%table.table.table-striped
+-# %table.table.table-striped
   %tr
     %th Título
     %th Sumilla
@@ -22,3 +22,28 @@
       %td= notice.type_notice
       %td= image_tag notice.image_url(:thumb)
       %td= user_tools notice, false, {:text=>false}
+
+%table.table.table-striped#notice-table
+  - if user_signed_in? and current_user.admin?
+    - is_user_admin = true
+  - else
+    - is_user_admin = false
+  - @notices.each do |notice|
+    %tr
+      %td.image= image_tag notice.image_url(:thumb) if notice.image?
+      %td
+        .date.orange
+          = notice.publication_date.strftime("%d-%m-%Y")
+        .title
+          = notice.title
+        .summary
+          %p
+            = truncate_words notice.summary.html_safe, 25
+      %td
+        %div
+          Publicado?
+          = tick notice.public if is_user_admin
+          %p
+        %div= user_tools notice, false, {:text=>false}
+
+= will_paginate(@notices)

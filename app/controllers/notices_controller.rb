@@ -2,7 +2,11 @@ class NoticesController < ApplicationController
   # GET /notices
   # GET /notices.json
   def index
-    @notices = Notice.all
+    unless user_signed_in? and current_user.admin?
+      @notices = Notice.paginate :page => params[:page] || 1, :per_page =>2
+    else
+      @notices = Notice.published.paginate :page => params[:page] || 1, :per_page =>2
+    end
 
     respond_to do |format|
       format.html # index.html.erb

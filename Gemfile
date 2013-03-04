@@ -46,6 +46,8 @@ gem "carrierwave"
 gem 'tinymce-rails'
 gem "devise"
 gem "ancestry"
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 group :development do
   gem "hpricot"
