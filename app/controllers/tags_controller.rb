@@ -1,3 +1,4 @@
+# coding: utf-8
 class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
@@ -83,4 +84,21 @@ class TagsController < ApplicationController
     end
   end
 
+  def up
+    @tag= Tag.find(params[:id])
+    Tag.move_higher @tag, true # true ancestry
+    respond_to do |format|
+      format.js
+      format.html { redirect_to tags_path, notice: "\"#{@tag.title}\" subió un lugar"}
+    end
+  end
+
+  def down
+    @tag= Tag.find(params[:id])
+    Tag.move_lower @tag, true # true ancestry
+    respond_to do |format|
+      format.js
+      format.html { redirect_to tags_path, notice: "\"#{@tag.title}\" bajó un lugar"}
+    end
+  end
 end

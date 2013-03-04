@@ -16,7 +16,12 @@ PersuadirPe::Application.routes.draw do
   devise_for :users #, :controllers => { :registrations => 'registrations'}
   resources :users, :only => [:index, :new, :edit, :update, :destroy, :create]
 
-  resources :tags
+  resources :tags do
+    member do
+      put 'up'
+      put 'down'
+    end
+  end
 
   get "home/index"
 

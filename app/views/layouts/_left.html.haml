@@ -5,27 +5,30 @@
     .accordion-body.collapse
       .accordion-inner
 
-  - Tag.roots.each do |tag|
+  - Tag.roots.order(:ancestry, :position).each do |tag|
     .accordion-group
       .accordion-heading
         - tiene_tags = tag.has_children? ? true : false
         - if tiene_tags
           = link_to "#collapse#{tag.id}", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"} do
             = tag.title
-            %i.icon-chevron-right
+            %i.icon-chevron-right.pull-right
         - else
           - if tag.articles.count > 0
-            = link_to "#{tag.title}", tag.articles.last, {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
+            = link_to "#{tag.title}", tag.articles.last, {:class=>"accordion-toggle"} #, :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
           - else
-            = link_to "#{tag.title}", "#", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
+            - if tag.link?
+              = link_to "#{tag.title}", "#{tag.link}"
+            - else
+              = link_to "#{tag.title}", "#", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
       - if tiene_tags
         .accordion-body.collapse{:id=>"collapse#{tag.id}"}
           .accordion-inner.tag-children
-            - tag.children.each do |children_tag|
+            - tag.children.order(:ancestry, :position).each do |children_tag|
               .item-menu
                 - if children_tag.articles.count == 1
                   = link_to "#{children_tag.title}", children_tag.articles.first
-                - elsif children_tag.published.articles.count > 1
+                - elsif children_tag.articles.count > 1
                   .dropdown
                     = link_to "#", {:class=>"dropdown-toggle", :"data-toggle"=>"dropdown"} do
                       = children_tag.title
@@ -34,7 +37,10 @@
                       - children_tag.articles.published.each do |article|
                         %li= link_to article, article
                 - else
-                  = link_to "#{children_tag.title}"
+                  - if children_tag.link?
+                    = link_to "#{children_tag.title}", "#{children_tag.link}"
+                  - else
+                    = link_to "#{children_tag.title}", "#"
       - else
         .accordion-body.collapse
           .accordion-inner

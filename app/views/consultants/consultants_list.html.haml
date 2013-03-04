@@ -2,24 +2,23 @@
 
 = new_tool Consultant
 %br
-- if user_signed_in? and current_user.admin?
-  %table.table.table-striped
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Charge
+    %th Description
+    %th Public
+    %th Image
+    %th
+
+  - @consultants.each do |consultant|
     %tr
-      %th Name
-      %th Charge
-      %th Description
-      %th Public
-      %th Image
-      %th
+      %td= consultant.name
+      %td= consultant.charge
+      %td= truncate_words consultant.description.html_safe, 15
+      %td= tick consultant.public
+      %td= consultant.image
+      %td= user_tools consultant, false, {:text=>false}
 
-    - @consultants.each do |consultant|
-      %tr
-        %td= consultant.name
-        %td= consultant.charge
-        %td= truncate_words consultant.description.html_safe, 15
-        %td= tick consultant.public
-        %td= consultant.image
-        %td= user_tools consultant, false, {:text=>false}
-
-- else
-  = render :partial => "consultant", :collection => @consultants
+= link_to consultants_path, :class => "btn btn-primary" do
+  Ver como el Público
