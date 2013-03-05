@@ -3,9 +3,12 @@
 .banner-article
 
 .body-article
-  %p
+  -# %p
     %h1= @page.title.html_safe
+  - if user_signed_in? and current_user.admin?
+    %p
+      %b= "Nombre de Página: #{@page.title}"
   %p
-    = @page.content.html_safe
+    = @page.description.html_safe
 
 = user_tools @page, false

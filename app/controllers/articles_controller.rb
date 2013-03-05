@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
-    @tag_ancestry = ancestry_options(Tag.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
+    # @tag_ancestry = ancestry_options(Tag.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
   end
 
   # POST /articles

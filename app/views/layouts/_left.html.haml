@@ -17,7 +17,7 @@
           - if page.link?
             = link_to "#{page.title}", "#{page.link}"
           - else
-            = link_to "#{page.title}", page, {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"}
+            = link_to "#{page.title}", page, {:class=>"accordion-toggle"} #, :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"}
       - if tiene_pages
         .accordion-body.collapse{:id=>"collapse#{page.id}"}
           .accordion-inner.tag-children

@@ -7,7 +7,7 @@
   %tr
     %th Order
     %th{:colspan=>2} Title
-    %th Description
+    %th Description/Link
     -#%th Articles
     %th
 
@@ -21,13 +21,12 @@
           = link_to down_page_path(page), :method=>:put do
             %i.icon-arrow-down
       %td{:colspan=>2}= page.title
-      %td= page.description.html_safe
-      -#%td
-        - if page.articles.count > 0
-          %div
-            - tag.articles.each do |article|
-              = link_to article do
-                = truncate_words("#{article.title}", 2)
+      %td
+        - if page.link?
+          = link_to "#{truncate_words(page.link, 3)}", page.link
+        - else
+          = truncate_words page.description.html_safe, 8
+
       %td= user_tools page, false, {:text=>false}
     - if page.has_children?
       - page.children.order(:ancestry, :position).each do |children_page|
@@ -41,11 +40,9 @@
               = link_to down_page_path(children_page), :method=>:put do
                 %i.icon-arrow-down
           %td= " - #{children_page.title}"
-          %td= children_page.description
-          -#%td
-            - if children_page.articles.count > 0
-              - children_tag.articles.each do |article|
-                %div
-                  = link_to article do
-                    = truncate_words "#{article.title}", 2
+          %td
+            - if children_page.link?
+              = link_to "#{truncate_words(children_page.link, 3)}", children_page.link
+            - else
+              = truncate_words children_page.description, 8
           %td= user_tools children_page, false, {:text=>false}
