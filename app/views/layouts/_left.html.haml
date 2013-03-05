@@ -5,44 +5,29 @@
     .accordion-body.collapse
       .accordion-inner
 
-  - Tag.roots.order(:ancestry, :position).each do |tag|
+  - Page.roots.order(:ancestry, :position).each do |page|
     .accordion-group
       .accordion-heading
-        - tiene_tags = tag.has_children? ? true : false
-        - if tiene_tags
-          = link_to "#collapse#{tag.id}", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"} do
-            = tag.title
+        - tiene_pages = page.has_children? ? true : false
+        - if tiene_pages
+          = link_to "#collapse#{page.id}", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"} do
+            = page.title
             %i.icon-chevron-right.pull-right
         - else
-          - if tag.articles.count > 0
-            = link_to "#{tag.title}", tag.articles.last, {:class=>"accordion-toggle"} #, :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
+          - if page.link?
+            = link_to "#{page.title}", "#{page.link}"
           - else
-            - if tag.link?
-              = link_to "#{tag.title}", "#{tag.link}"
-            - else
-              = link_to "#{tag.title}", "#", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{tag.id}"}
-      - if tiene_tags
-        .accordion-body.collapse{:id=>"collapse#{tag.id}"}
+            = link_to "#{page.title}", page, {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"}
+      - if tiene_pages
+        .accordion-body.collapse{:id=>"collapse#{page.id}"}
           .accordion-inner.tag-children
-            - tag.children.order(:ancestry, :position).each do |children_tag|
+            - page.children.order(:ancestry, :position).each do |children_page|
               .item-menu
-                - if children_tag.articles.count == 1
-                  = link_to "#{children_tag.title}", children_tag.articles.first
-                - elsif children_tag.articles.count > 1
-                  .dropdown
-                    = link_to "#", {:class=>"dropdown-toggle", :"data-toggle"=>"dropdown"} do
-                      = children_tag.title
-                      %b.caret
-                    %ul.dropdown-menu
-                      - children_tag.articles.published.each do |article|
-                        %li= link_to article, article
+                - if children_page.link?
+                  = link_to "#{children_page.title}", "#{children_page.link}"
                 - else
-                  - if children_tag.link?
-                    = link_to "#{children_tag.title}", "#{children_tag.link}"
-                  - else
-                    = link_to "#{children_tag.title}", "#"
+                  = link_to "#{children_page.title}", children_page
       - else
         .accordion-body.collapse
           .accordion-inner
-
 

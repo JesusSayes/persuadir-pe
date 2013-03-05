@@ -10,8 +10,8 @@
           %li= link_to "My Profile", edit_user_path(current_user)
           %li.divider
           - if current_user.admin?
-            %li= link_to "Tags", tags_path
-            %li= link_to "Páginas", articles_path
+            %li= link_to "Páginas", pages_path
+            -# %li= link_to "Páginas", articles_path
             %li= link_to "Usuarios", users_path
             %li= link_to "Slides", slides_path
             %li= link_to "Noticias - Artículos", notices_path

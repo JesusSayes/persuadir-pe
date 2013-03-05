@@ -1,0 +1,51 @@
+%h1 Listing Pages
+
+= new_tool Page
+%br
+
+%table.table.table-striped
+  %tr
+    %th Order
+    %th{:colspan=>2} Title
+    %th Description
+    -#%th Articles
+    %th
+
+  - Page.roots.order(:ancestry, :position).each do |page|
+    %tr
+      %td
+        - unless Page.higher_item(page) == nil
+          = link_to up_page_path(page), :method=>:put do
+            %i.icon-arrow-up
+        - unless Page.lower_item(page) == nil
+          = link_to down_page_path(page), :method=>:put do
+            %i.icon-arrow-down
+      %td{:colspan=>2}= page.title
+      %td= page.description.html_safe
+      -#%td
+        - if page.articles.count > 0
+          %div
+            - tag.articles.each do |article|
+              = link_to article do
+                = truncate_words("#{article.title}", 2)
+      %td= user_tools page, false, {:text=>false}
+    - if page.has_children?
+      - page.children.order(:ancestry, :position).each do |children_page|
+        %tr
+          %td
+          %td
+            - unless Page.higher_item(children_page) == nil
+              = link_to up_page_path(children_page), :method=>:put do
+                %i.icon-arrow-up
+            - unless Page.lower_item(children_page) == nil
+              = link_to down_page_path(children_page), :method=>:put do
+                %i.icon-arrow-down
+          %td= " - #{children_page.title}"
+          %td= children_page.description
+          -#%td
+            - if children_page.articles.count > 0
+              - children_tag.articles.each do |article|
+                %div
+                  = link_to article do
+                    = truncate_words "#{article.title}", 2
+          %td= user_tools children_page, false, {:text=>false}

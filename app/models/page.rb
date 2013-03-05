@@ -1,11 +1,16 @@
-class Tag < ActiveRecord::Base
+class Page < ActiveRecord::Base
   attr_accessible :description, :title, :parent_id, :link, :position
-  has_many :articles
+  # has_many :articles
 
   has_ancestry
   # acts_as_list scope: [:ancestry]
 
   scope :ordered, lambda{ order(:position)}
+  scope :published, where(:public=>true)
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 
   def self.move_higher(current_item, ancestry = false)
     higher_item = self.higher_item(current_item, ancestry)
@@ -30,18 +35,18 @@ class Tag < ActiveRecord::Base
   def self.lower_item(current_item, ancestry = true)
     if ancestry
       value_ancestry = current_item.ancestry || nil
-      lower_item = Tag.where(:ancestry=>value_ancestry).order(:position).where("position > #{current_item.position}").first
+      lower_item = Page.where(:ancestry=>value_ancestry).order(:position).where("position > #{current_item.position}").first
     else
-      lower_item = Tag.where("position > #{current_item.position}").first
+      lower_item = Page.where("position > #{current_item.position}").first
     end
   end
 
   def self.higher_item(current_item, ancestry = true)
     if ancestry
       value_ancestry = current_item.ancestry || nil
-      higher_item = Tag.where(:ancestry=>value_ancestry).order(:position).where("position < #{current_item.position}").last
+      higher_item = Page.where(:ancestry=>value_ancestry).order(:position).where("position < #{current_item.position}").last
     else
-      higher_item = Tag.where("position < #{current_item.position}").last
+      higher_item = Page.where("position < #{current_item.position}").last
     end
   end
 end

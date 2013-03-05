@@ -16,7 +16,7 @@ PersuadirPe::Application.routes.draw do
   devise_for :users #, :controllers => { :registrations => 'registrations'}
   resources :users, :only => [:index, :new, :edit, :update, :destroy, :create]
 
-  resources :tags do
+  resources :pages do
     member do
       put 'up'
       put 'down'

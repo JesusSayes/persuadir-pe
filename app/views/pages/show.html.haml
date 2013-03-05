@@ -1,0 +1,11 @@
+%p#notice= notice
+
+.banner-article
+
+.body-article
+  %p
+    %h1= @page.title.html_safe
+  %p
+    = @page.content.html_safe
+
+= user_tools @page, false

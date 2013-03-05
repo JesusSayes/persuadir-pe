@@ -1,0 +1,14 @@
+= tinymce_assets
+= simple_form_for(@page) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :description, :input_html => {:class=>"tinymce span11"}
+    = f.input :link
+    = f.input :parent_id, :collection=>@page_ancestry
+    = f.input :position, :value => (Page.order(:position).last.position.to_i + 1), :as => :hidden
+
+  .form-actions
+    = f.button :submit
+  = tinymce

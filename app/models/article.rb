@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   attr_accessible :content, :menu, :public, :summary, :title, :tag_id
-  belongs_to :tag
+  # belongs_to :page
 
   # scope :published, where(:public=>true).where("publication_date is null or publication_date < ?", Time.now)
   scope :published, where(:public=>true)
