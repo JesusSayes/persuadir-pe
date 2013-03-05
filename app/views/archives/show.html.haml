@@ -1,0 +1,12 @@
+%p
+  %b Description:
+  = @archive.description
+=user_tools @archive, false
+%p
+  %b Archive:
+  - if @archive.archive?
+    = image_tag @archive.archive_url(:thumb)
+    = image_tag @archive.archive_url(:medium)
+    = image_tag @archive.archive_url(:larger)
+
+= link_to 'Back', archives_path

@@ -1,5 +1,7 @@
 PersuadirPe::Application.routes.draw do
 
+  resources :archives
+
   resources :consultants
   get "consultants_list" => "consultants#consultants_list", :as => "consultants_list"
 

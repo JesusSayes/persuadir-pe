@@ -1,0 +1,16 @@
+%h1 Listing archives
+
+= new_tool Archive
+
+%table.table.table-striped
+  %tr
+    %th Archive
+    %th Description
+    %th
+
+  - @archives.each do |archive|
+    %tr
+      %td= archive.archive
+      %td= archive.description
+      %td= user_tools archive, false, {:text=>false}
+
