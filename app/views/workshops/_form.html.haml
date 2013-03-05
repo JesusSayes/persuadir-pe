@@ -12,9 +12,9 @@
       .field
         = f.input :title
       .field
-        = f.input :summary, :input_html => {:class => "tinymce span11"}
+        = f.input :summary, :input_html => {:class => "tinymce span12"}
       .field
-        = f.input :content, :input_html => {:class => "tinymce span11"}
+        = f.input :content, :input_html => {:class => "tinymce span12"}
       -# .field
         -# = f.input :menu, :collection=>2..6
       .field
@@ -26,4 +26,4 @@
       = tinymce
 
   .span3
-
+    = render :partial => "layouts/frame_response"

@@ -1,2 +1,9 @@
 $("#archives").html('<%= escape_javascript(render :template => "archives/index", :formats => [:html]) %>');
 $("#archives a[title='Modificar']").remove();
+$(".pagination a").click( function(e){
+  e.preventDefault();
+  var archive_page = (this.href).split("?");
+  archive_page = archive_page[1].split("page=");
+  $.getScript("/archives?page="+archive_page[1]);
+  $("#archives a[title='Modificar']").remove();
+});

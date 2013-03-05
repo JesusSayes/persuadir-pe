@@ -1,8 +1,8 @@
 # coding: utf-8
 class ArchivesController < ApplicationController
   def index
-    @archives = Archive.order("id desc")
-
+    # @archives = Archive.order("id desc")
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page =>10
     respond_to do |format|
       format.js
       format.html # index.html.erb

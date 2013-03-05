@@ -29,6 +29,7 @@ class NoticesController < ApplicationController
   # GET /notices/new.json
   def new
     @notice = Notice.new
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page => 8
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,6 +40,7 @@ class NoticesController < ApplicationController
   # GET /notices/1/edit
   def edit
     @notice = Notice.find(params[:id])
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page => 8
   end
 
   # POST /notices

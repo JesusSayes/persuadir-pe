@@ -29,6 +29,7 @@ $(function(){
     $("a").removeAttr("data-remote");
     $("form").removeAttr("data-remote");
   }
+
   $("#upload_frame").load(function(){
     var cambio_alert = $(this.contentDocument).find('.alert').clone();
     $("#message_archive").html(cambio_alert);
@@ -37,4 +38,18 @@ $(function(){
       $("#archives a[title='Modificar']").remove();
     }
   });
+
+  $(".pagination a").click( function(e){
+    e.preventDefault();
+    pagination(this.href);
+  });
+
+  function pagination(pag){
+    var archive_page = pag.split("?");
+    archive_page = archive_page[1].split("page=");
+    $.getScript("/archives?page="+archive_page[1]);
+    $("#archives a[title='Modificar']").remove();
+  }
+
 });
+

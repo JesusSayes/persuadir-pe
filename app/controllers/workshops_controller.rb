@@ -21,6 +21,7 @@ class WorkshopsController < ApplicationController
   def new
     @workshop = Workshop.new
     #@tag_ancestry = ancestry_options(Tag.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page => 8
 
     respond_to do |format|
       format.html # new.html.erb
@@ -31,6 +32,7 @@ class WorkshopsController < ApplicationController
   def edit
     @workshop = Workshop.find(params[:id])
     # @tag_ancestry = ancestry_options(Tag.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page => 8
   end
 
   def create

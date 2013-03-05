@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     @page_ancestry = ancestry_options(Page.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
-    @archives = Archive.order("id desc")
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page => 8
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
   def edit
     @page = Page.find(params[:id])
     @page_ancestry = ancestry_options(Page.scoped.arrange(:order => 'title')) {|i| "#{'--' * i.depth} #{i.title}" }
-    @archives = Archive.order("id desc")
+    @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page => 8
   end
 
   def create

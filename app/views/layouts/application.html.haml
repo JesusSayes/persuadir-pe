@@ -29,10 +29,15 @@
       .container#body
         = render 'layouts/messages'
         .row-fluid
-          .column-left.span3
-            = render :partial => "layouts/left"
-          .column-right.span9
-            = content_for?(:content) ? yield(:content) : yield
+          - if content_for?(:menu)
+            = yield :menu
+            .column-right.span12
+              = content_for?(:content) ? yield(:content) : yield
+          - else
+            .column-left.span3
+              = render :partial => "layouts/left"
+            .column-right.span9
+              = content_for?(:content) ? yield(:content) : yield
 
     %footer
       .container#footer
