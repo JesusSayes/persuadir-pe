@@ -1,6 +1,6 @@
-%h1 Listing archives
+%h2 Listing archives
 
-= new_tool Archive
+= new_tool Archive, {}, {:remote=>true}
 
 %table.table.table-striped
   %tr
@@ -10,7 +10,7 @@
 
   - @archives.each do |archive|
     %tr
-      %td= archive.archive
+      %td= image_tag archive.archive_url(:thumb) if archive.archive?
       %td= archive.description
-      %td= user_tools archive, false, {:text=>false}
+      %td= user_tools archive, false, {:text=>false, :remote=>true}
 

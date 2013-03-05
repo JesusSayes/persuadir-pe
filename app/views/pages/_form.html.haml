@@ -2,13 +2,17 @@
 = simple_form_for(@page) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :title, :label=>"Nombre de la Página"
-    = f.input :description, :input_html => {:class=>"tinymce span11"}, :label=>"Contenido de la Página (Incluir título)"
-    = f.input :link
-    = f.input :parent_id, :collection=>@page_ancestry
-    = f.input :position, :value => (Page.order(:position).last.position.to_i + 1), :as => :hidden
+  .row-fluid
+    .span9
+      .form-inputs
+        = f.input :title, :label=>"Nombre de la Página"
+        = f.input :description, :input_html => {:class=>"tinymce span12"}, :label=>"Contenido de la Página (Incluir título)"
+        = f.input :link
+        = f.input :parent_id, :collection=>@page_ancestry
+        = f.input :position, :value => (Page.order(:position).last.position.to_i + 1), :as => :hidden
 
-  .form-actions
-    = f.button :submit
-  = tinymce
+      .form-actions
+        = f.button :submit
+      = tinymce
+    .span3
+      = render :partial => "layouts/frame_response"

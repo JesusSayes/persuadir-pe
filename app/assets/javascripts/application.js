@@ -20,3 +20,21 @@ $(document).ready(function(){
     interval: 6000
   });
 });
+
+
+$(function(){
+  $("#archives a[title='Modificar']").remove();
+
+  if ($("#archives").length == 0){
+    $("a").removeAttr("data-remote");
+    $("form").removeAttr("data-remote");
+  }
+  $("#upload_frame").load(function(){
+    var cambio_alert = $(this.contentDocument).find('.alert').clone();
+    $("#message_archive").html(cambio_alert);
+    if($("#flash_notice").html() == "Archive was successfully created."){
+      $.getScript("/archives");
+      $("#archives a[title='Modificar']").remove();
+    }
+  });
+});

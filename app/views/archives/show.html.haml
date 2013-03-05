@@ -1,7 +1,7 @@
 %p
   %b Description:
   = @archive.description
-=user_tools @archive, false
+=user_tools @archive, false, {:remote=>true}
 %p
   %b Archive:
   - if @archive.archive?
@@ -9,4 +9,4 @@
     = image_tag @archive.archive_url(:medium)
     = image_tag @archive.archive_url(:larger)
 
-= link_to 'Back', archives_path
+= link_to 'Back', archives_path, :remote=>true
