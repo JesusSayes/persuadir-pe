@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Workshop < ActiveRecord::Base
   attr_accessible :content, :menu, :public, :summary, :title, :tag_id
   # belongs_to :page
 

@@ -11,24 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305152043) do
+ActiveRecord::Schema.define(:version => 20130305205450) do
 
   create_table "archives", :force => true do |t|
     t.string   "archive"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "articles", :force => true do |t|
-    t.string   "title"
-    t.text     "summary"
-    t.text     "content"
-    t.integer  "menu"
-    t.boolean  "public"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "tag_id"
   end
 
   create_table "consultants", :force => true do |t|
@@ -104,5 +93,16 @@ ActiveRecord::Schema.define(:version => 20130305152043) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "workshops", :force => true do |t|
+    t.string   "title"
+    t.text     "summary"
+    t.text     "content"
+    t.integer  "menu"
+    t.boolean  "public"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "tag_id"
+  end
 
 end

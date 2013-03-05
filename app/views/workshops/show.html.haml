@@ -1,0 +1,10 @@
+.banner-article
+  = @workshop.summary.html_safe
+.body-article
+  %p
+    %h1= @workshop.title.html_safe
+  %p
+    = @workshop.content.html_safe
+
+= user_tools @workshop, false
+
