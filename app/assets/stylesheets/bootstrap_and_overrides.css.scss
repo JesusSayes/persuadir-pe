@@ -59,8 +59,10 @@ body{
     margin: 0 0 25px;
     padding: 25px 20px 20px 30px;
     border-radius: 8px;
+    border: 1px solid #EB7304;
     // @include box-shadow(#{ 4px 8px 8px 1px rgba(136,136,136,1)});
     @include box-shadow(#{ 5px 5px 8px 4px rgba(136,136,136,1)});
+    // @include box-shadow(#{ 5px 5px 8px 4px rgba(235,164,26,0.78)}); // naranja
     h1{
       font-size: 28px;
       font-weight: lighter;
@@ -124,6 +126,9 @@ body{
           h3{
             margin: 0 0 15px 0;
           }
+        }
+        a{
+          color: #555;
         }
         .notice-list{
           .notice-date{
@@ -194,22 +199,76 @@ body{
   footer{
     #footer{
       margin-top: 40px;
+      .well{
+        margin-bottom: 0;
+      }
     }
   }
   .orange{
     font-weight: bold;
     color: #FF6600;
   }
-  .accordion-heading .accordion-toggle{
-    padding-right: 10px;
-  }
-  .accordion-inner div:first-child{
-     border-top: 0;
-  }
-  .item-menu{
-    border-top: 1px solid #E5E5E5;
-    padding: 8px;
-    margin: 0 0 0 10px;
+  #accordion1{
+    border-radius: 8px;
+    font-weight: bold;
+    a{
+      color: #555555;
+      &:hover{
+        color: #FFF;
+      }
+    }
+    .accordion-group{
+      // border: 1px solid #FF6600;
+      // border: 1px solid #EB7304;
+      // border: 1px solid #999;
+      border: 1px solid #70675e;
+    }
+    .accordion-heading .accordion-toggle{
+      padding-left: 10px;
+      padding-right: 8px;
+      // @include box-shadow(#{ 2px 2px 5px 1px rgba(136,136,136,1)});
+      &:hover{
+        background-color: #f5a051;
+        border-radius: 4px;
+
+      }
+    }
+    .accordion-body{
+      // border-top: 1px solid #EB7304;
+    }
+    .accordion-inner div:first-child{
+       border-top: 0;
+    }
+    .item-menu{
+      // border-top: 1px solid #E5E5E5;
+      border-top: 1px solid #EB7304;
+      padding: 8px;
+      margin: 0 0 0 10px;
+      &:hover{
+        border-radius: 4px;
+        // background-color: #f5a051;
+        color: #EB7304;
+      }
+    }
+
+    .collapse-active{
+      border-radius: 4px;
+      background-color: #EB7304;
+      color: white;
+      a{
+        color: white;
+      }
+    }
+    .collapse-active-txt{
+      color: #EB7304;
+    }
+    .collapse-active-parent{
+      background-color: #f5a051;
+      border-radius: 4px;
+      a{
+        color: white;
+      }
+    }
   }
 }
 #upload_frame{
@@ -230,3 +289,9 @@ body{
 .txt-center{
   text-align: center;
 }
+.divisor {
+  background-color: #EB7304;
+  height: 4px;
+  margin: 5px;
+}
+

@@ -1,13 +1,13 @@
 .accordion#accordion1
   .accordion-group
-    .accordion-heading
+    .accordion-heading{:class=>(request[:controller]=="home" ? "collapse-active" : nil)}
       = link_to "Inicio", root_path, :class=>"accordion-toggle"
     .accordion-body.collapse
       .accordion-inner
 
   - Page.roots.order(:ancestry, :position).each do |page|
     .accordion-group
-      .accordion-heading
+      .accordion-heading{:class=>(request[:controller]=="pages" and params[:id]==page.to_param ? "collapse-active" : nil)}
         - tiene_pages = page.has_children? ? true : false
         - if tiene_pages
           = link_to "#collapse#{page.id}", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"} do
@@ -22,11 +22,15 @@
         .accordion-body.collapse{:id=>"collapse#{page.id}"}
           .accordion-inner.tag-children
             - page.children.order(:ancestry, :position).each do |children_page|
-              .item-menu
-                - if children_page.link?
-                  = link_to "#{children_page.title}", "#{children_page.link}"
-                - else
-                  = link_to "#{children_page.title}", children_page
+              - if children_page.link?
+                = link_to "#{children_page.link}" do
+                  -# Sólo consideramos el caso de consultants
+                  .item-menu{:class=>(request[:controller]=="consultants" ? "collapse-active-txt" : nil)}
+                    ="#{children_page.title}"
+              - else
+                = link_to children_page do
+                  .item-menu{:class=>(request[:controller]=="pages" and params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
+                    = "#{children_page.title}"
       - else
         .accordion-body.collapse
           .accordion-inner

@@ -17,7 +17,9 @@ PersuadirPe::Application.routes.draw do
     resources :images
   end
 
-  devise_for :users #, :controllers => { :registrations => 'registrations'}
+  #devise_for :users #, :controllers => { :registrations => 'registrations'}
+  # devise_for :users
+  devise_for :user, :path => '', :path_names => { :sign_in => "log_in"}
   resources :users, :only => [:index, :new, :edit, :update, :destroy, :create]
 
   resources :pages do

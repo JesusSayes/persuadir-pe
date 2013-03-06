@@ -8,4 +8,7 @@ class Notice < ActiveRecord::Base
 
   scope :published, lambda{where(:public=>true).order("publication_date DESC")}
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end

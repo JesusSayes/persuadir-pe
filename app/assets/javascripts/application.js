@@ -20,6 +20,13 @@ $(document).ready(function(){
   $('.carousel').carousel({
     interval: 6000
   });
+
+  // var collapse_parent = $(".item-menu.collapse-active").parent().parent().parent().parent().children(".accordion-heading");
+  var collapse_parent = $(".item-menu.collapse-active-txt").parent().parent().parent().parent().children(".accordion-heading");
+  // collapse_parent.addClass("collapse-active-parent");
+  collapse_parent.addClass("collapse-active");
+  var collapse_link = collapse_parent.children(".accordion-toggle").attr("href");
+  $(collapse_link).addClass("in");
 });
 
 

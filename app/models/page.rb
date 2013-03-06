@@ -12,6 +12,10 @@ class Page < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
+  def to_s
+    title
+  end
+
   def self.move_higher(current_item, ancestry = false)
     higher_item = self.higher_item(current_item, ancestry)
     self.change_position(current_item, higher_item)
