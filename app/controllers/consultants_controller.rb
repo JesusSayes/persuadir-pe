@@ -1,4 +1,6 @@
+# coding: utf-8
 class ConsultantsController < ApplicationController
+  load_and_authorize_resource
   def index
     @consultants = Consultant.published
 

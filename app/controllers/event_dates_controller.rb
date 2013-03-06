@@ -1,5 +1,6 @@
 # coding: utf-8
 class EventDatesController < ApplicationController
+  load_and_authorize_resource
   before_filter :event_dateable
 
   def index

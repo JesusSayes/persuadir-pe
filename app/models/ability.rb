@@ -7,9 +7,17 @@ class Ability
       can :manage, :all
     else
       can :manage, User, :id => user.id
-      can :read, Article
-      cannot :index, Article
+      can :read, Page
+      can :read, Consultant
+      can :read, Notice
+      can :read, Workshop
+      cannot :index, Page
       cannot :index, User
+      cannot :index, EventDate
+      cannot :index, Image
+      cannot :index, Notice
+      cannot :index, Workshop
+
     end
   end
 end

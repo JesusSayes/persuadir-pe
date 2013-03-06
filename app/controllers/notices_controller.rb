@@ -1,4 +1,6 @@
+# coding: utf-8
 class NoticesController < ApplicationController
+  load_and_authorize_resource
   # GET /notices
   # GET /notices.json
   def index

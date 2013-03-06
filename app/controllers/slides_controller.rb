@@ -1,4 +1,6 @@
+# coding: utf-8
 class SlidesController < ApplicationController
+  load_and_authorize_resource
   # GET /slides
   # GET /slides.json
   def index

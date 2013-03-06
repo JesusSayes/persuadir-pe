@@ -1,5 +1,6 @@
 # coding: utf-8
 class ArchivesController < ApplicationController
+  load_and_authorize_resource
   def index
     # @archives = Archive.order("id desc")
     @archives = Archive.order("id desc").paginate :page => params[:page] || 1, :per_page =>10
