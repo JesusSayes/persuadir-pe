@@ -1,0 +1,18 @@
+%h1
+  Fechas de
+  = link_to @event_dateable, @event_dateable
+
+= new_tool [@event_dateable, EventDate]
+
+%table.table.table-striped
+  %tr
+    %th Event date
+    %th Description
+    %th
+
+  - @event_dates.each do |event_date|
+    %tr
+      %td= event_date.event_date
+      %td= event_date.description
+      %td= user_tools [@event_date, event_date], false
+

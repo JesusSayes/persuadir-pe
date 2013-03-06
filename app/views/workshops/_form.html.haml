@@ -11,7 +11,7 @@
 
       .field
         = f.input :title
-      .field
+      -#.field
         = f.input :summary, :input_html => {:class => "tinymce span12"}
       .field
         = f.input :content, :input_html => {:class => "tinymce span12"}
@@ -20,7 +20,7 @@
       .field
         = f.input :public
       .field
-        -# = f.input :tag_id, :collection=>@tag_ancestry
+        = f.input :page_id, :collection => @page_ancestry, :label => "En la Página"
       .actions
         = f.button :submit
       = tinymce

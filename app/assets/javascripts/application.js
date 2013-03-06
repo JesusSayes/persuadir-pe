@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require_tree .
 
@@ -50,6 +51,10 @@ $(function(){
     $.getScript("/archives?page="+archive_page[1]);
     $("#archives a[title='Modificar']").remove();
   }
+
+  $("#event_date_event_date").datepicker({
+    dateFormat: 'dd-mm-yy'
+  });
 
 });
 

@@ -1,5 +1,7 @@
 PersuadirPe::Application.routes.draw do
 
+  resources :event_dates
+
   resources :archives
 
   resources :consultants
@@ -27,7 +29,9 @@ PersuadirPe::Application.routes.draw do
 
   get "home/index"
 
-  resources :workshops
+  resources :workshops do
+    resources :event_dates
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

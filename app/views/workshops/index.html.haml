@@ -5,7 +5,6 @@
 %table.table.table-striped
   %tr
     %th Title
-    %th Summary
     %th Content
     %th Menu
     %th Public
@@ -14,7 +13,6 @@
   - @workshops.each do |workshop|
     %tr
       %td= workshop.title
-      %td= truncate_words workshop.summary.html_safe, 5
       %td= truncate_words workshop.content.html_safe, 8
       %td= tick workshop.menu
       %td= tick workshop.public

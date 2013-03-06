@@ -1,0 +1,9 @@
+%p
+  %b Event date:
+  = @event_date.event_date
+%p
+  %b Description:
+  = @event_date.description
+
+= user_tools [@event_dateable, @event_date], false
+= link_to 'Regresar', [@event_dateable, :event_dates]

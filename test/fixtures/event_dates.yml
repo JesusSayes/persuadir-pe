@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_date: 2013-03-05 21:34:12
+  description: MyText
+  event_dateable_id: 1
+  event_dateable_type: MyString
+
+two:
+  event_date: 2013-03-05 21:34:12
+  description: MyText
+  event_dateable_id: 1
+  event_dateable_type: MyString

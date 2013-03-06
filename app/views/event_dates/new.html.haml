@@ -1,0 +1,7 @@
+%h1
+  Nueva Fecha para
+  = link_to @event_dateable, @event_dateable
+
+= render 'form'
+
+= link_to 'Regresar', [@event_dateable, :event_dates]

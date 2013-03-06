@@ -1,6 +1,7 @@
 class Workshop < ActiveRecord::Base
-  attr_accessible :content, :menu, :public, :summary, :title, :tag_id
-  # belongs_to :page
+  attr_accessible :content, :menu, :public, :summary, :title, :page_id
+  has_many :event_dates, :as => :event_dateable
+  belongs_to :page
 
   # scope :published, where(:public=>true).where("publication_date is null or publication_date < ?", Time.now)
   scope :published, where(:public=>true)

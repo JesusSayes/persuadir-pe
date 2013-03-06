@@ -1,0 +1,11 @@
+= simple_form_for([@event_dateable, @event_date]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :event_date, :as=>:string
+    = f.input :description, :input_html => {:rows=>"4"}
+    -# = f.input :event_dateable_id
+    -# = f.input :event_dateable_type
+
+  .form-actions
+    = f.button :submit

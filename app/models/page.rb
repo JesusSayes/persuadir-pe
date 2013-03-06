@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   attr_accessible :description, :title, :parent_id, :link, :position
-  # has_many :articles
+  has_many :workshops
 
   has_ancestry
   # acts_as_list scope: [:ancestry]

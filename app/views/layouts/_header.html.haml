@@ -1,5 +1,6 @@
 .pull-left
-  = image_tag "logo.jpg"
+  = link_to root_path do
+    = image_tag "logo.jpg"
 .pull-right
-  = Time.now
+  = l(Time.now.to_date, :format=>:long)
   = render :partial => "layouts/user_nav"
