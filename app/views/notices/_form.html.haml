@@ -3,7 +3,7 @@
   = f.error_notification
 
   .row-fluid
-    .span9
+    .span8
       .form-inputs
         = f.input :title, :input_html => {:class => "span11"}
         = f.input :summary, :input_html => {:class => "tinymce span11", :style => "height: 250px;"}
@@ -28,7 +28,7 @@
       .form-actions
         = f.button :submit
 
-    .span3
+    .span4
       = render :partial => "layouts/frame_response"
 
 = tinymce

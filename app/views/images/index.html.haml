@@ -1,4 +1,6 @@
-%h1 Listing images
+%h1 Listado de Imágenes
+
+- @imageable = @imageable || imageable
 
 = new_tool([@imageable, Image])
 %table.table.table-striped
@@ -8,8 +10,6 @@
     %th Image
     %th Link
     %th
-    %th
-    %th
 
   - @images.each do |image|
     %tr
@@ -17,7 +17,7 @@
       %td= image.description
       %td= image_tag image.image_url(:thumb)
       %td= image.link
-      %td= user_tools [@imageable, image], false
+      %td= user_tools [@imageable, image], false, {:text=>false}
 
 %br
 

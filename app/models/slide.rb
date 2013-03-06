@@ -4,4 +4,11 @@ class Slide < ActiveRecord::Base
 
   scope :in_home, where(:public => true)
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
+  def to_s
+    title
+  end
 end

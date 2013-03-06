@@ -2,5 +2,8 @@
   = link_to root_path do
     = image_tag "logo.jpg"
 .pull-right
-  = l(Time.now.to_date, :format=>:long)
-  = render :partial => "layouts/user_nav"
+  .row-fluid
+    .pull-right
+      %p= l(Time.now.to_date, :format=>:long).capitalize
+  .row-fluid
+    = render :partial => "layouts/user_nav"

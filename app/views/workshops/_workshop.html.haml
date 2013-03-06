@@ -1,0 +1,15 @@
+-# .banner-article
+  -# = @workshop.summary.html_safe
+.body-article
+  .pull-left
+    %h3
+      = link_to workshop do
+        = workshop.title.html_safe
+    %p
+      = truncate_words workshop.content.html_safe, 12
+
+  - if user_signed_in? and current_user.admin?
+    .pull-right
+      -# = link_to "Agregar fecha", new_polymorphic_path([workshop, EventDate]), :class=>"btn btn-primary"
+      = user_tools workshop, false, {:text=>false}
+

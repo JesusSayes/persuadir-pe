@@ -1,6 +1,6 @@
 = tinymce_assets
 .row-fluid
-  .span9
+  .span8
     = simple_form_for @workshop do |f|
       - if @workshop.errors.any?
         #error_explanation
@@ -25,5 +25,5 @@
         = f.button :submit
       = tinymce
 
-  .span3
+  .span4
     = render :partial => "layouts/frame_response"

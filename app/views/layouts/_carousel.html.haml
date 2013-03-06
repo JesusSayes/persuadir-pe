@@ -7,7 +7,11 @@
         - slide.images.each_with_index do |image, index|
           - activo = index==0 ? "active" : ""
           .item{:class=>"#{activo}"}
-            = image_tag image.image_url(:larger)
+            - if image.link?
+              = link_to image.link, {:target=>"_blank"} do
+                = image_tag image.image_url(:larger)
+            - else
+              = image_tag image.image_url(:larger)
   <!-- Carousel nav -->
   -#= link_to "carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   = link_to "#myCarousel", :class=>"carousel-control left", :"data-slide"=>"prev" do

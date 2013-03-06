@@ -1,16 +1,18 @@
-%p#notice= notice
+.my-well
+  %p
+    %b Title:
+    = @slide.title
+  %p
+    %b Description:
+    = @slide.description
+  %p
+    %b Public:
+    = tick @slide.public
 
-%p
-  %b Title:
-  = @slide.title
-%p
-  %b Description:
-  = @slide.description
-%p
-  %b Public:
-  = tick @slide.public
-
-= link_to "Agregar Imagen", new_slide_image_path(@slide), :class=>"btn btn-primary"
+  -# = link_to "Agregar Imagen", new_slide_image_path(@slide), :class=>"btn btn-primary"
+  %br
+  %br
+  = user_tools @slide, false
 %br
-%br
-= user_tools @slide, false
+.my-well
+  = render :template => "images/index", :locals=>{:imageable=>@slide}

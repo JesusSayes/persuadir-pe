@@ -1,7 +1,9 @@
-%h1 Editing image
+-# - @imageable = @imageable || imageable
+%h1
+  Editando Imagen de
+  = link_to @imageable, @imageable
 
 = render 'form'
 
-= link_to 'Show', @image
-\|
+= user_tools [@imageable, @image]
 = link_to 'Back', images_path

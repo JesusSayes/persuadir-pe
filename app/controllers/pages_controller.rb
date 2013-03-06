@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
+    @workshops = @page.workshops
 
     respond_to do |format|
       format.html # show.html.erb
