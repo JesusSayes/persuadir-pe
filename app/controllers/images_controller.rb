@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
     @image.imageable = @imageable
 
     if @image.save
-      redirect_to @imageable, notice: 'Image was successfully created.'
+      redirect_to @imageable, notice: 'Imagen creada satisfactoriamente.'
     else
       render action: "new"
     end
@@ -32,7 +32,7 @@ class ImagesController < ApplicationController
 
   def update
     if @image.update_attributes(params[:image])
-      redirect_to [@imageable, :images], notice: 'Image was successfully updated.'
+      redirect_to [@imageable, :images], notice: 'Imagen actualizada satisfactoriamente.'
     else
       render action: "edit"
     end
@@ -40,7 +40,7 @@ class ImagesController < ApplicationController
 
   def destroy
     @image.destroy
-    redirect_to [@imageable], notice: "Image destroyed"
+    redirect_to [@imageable], notice: "Imagen eliminada."
   end
 
   private

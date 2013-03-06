@@ -35,7 +35,7 @@ class EventDatesController < ApplicationController
     @event_date = EventDate.find(params[:id])
     # respond_to do |format|
     if @event_date.update_attributes(params[:event_date])
-      redirect_to [@event_dateable, :event_dates], notice: 'Event date was successfully updated.'
+      redirect_to [@event_dateable, :event_dates], notice: 'Fecha de evento actualizada satisfactoriamente.'
     else
       render action: "edit"
     end

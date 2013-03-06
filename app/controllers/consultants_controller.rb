@@ -43,7 +43,7 @@ class ConsultantsController < ApplicationController
 
     respond_to do |format|
       if @consultant.save
-        format.html { redirect_to @consultant, notice: 'Consultant was successfully created.' }
+        format.html { redirect_to @consultant, notice: 'Consultor creado satisfactoriamente.' }
         format.json { render json: @consultant, status: :created, location: @consultant }
       else
         format.html { render action: "new" }
@@ -57,7 +57,7 @@ class ConsultantsController < ApplicationController
 
     respond_to do |format|
       if @consultant.update_attributes(params[:consultant])
-        format.html { redirect_to @consultant, notice: 'Consultant was successfully updated.' }
+        format.html { redirect_to @consultant, notice: 'Consultor actualizado satisfactoriamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

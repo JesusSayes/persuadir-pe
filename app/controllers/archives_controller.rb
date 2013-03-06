@@ -29,7 +29,7 @@ class ArchivesController < ApplicationController
     respond_to do |format|
       if @archive.save
         format.js
-        format.html { redirect_to archives_url, notice: 'Archive was successfully created.' }
+        format.html { redirect_to archives_url, notice: 'Archivo creado satisfactoriamente.' }
       else
         format.js { render :action => "new" }
         format.html { render action: "new" }
@@ -43,7 +43,7 @@ class ArchivesController < ApplicationController
     respond_to do |format|
       if @archive.update_attributes(params[:archive])
         format.js
-        format.html { redirect_to archives_url, notice: 'Archive was successfully updated.' }
+        format.html { redirect_to archives_url, notice: 'Archivo actualizado satisfactoriamente.' }
       else
         format.js {render :action => "edit", :alert => "Error #{@archive.errors.full_messages.map{|e| e}.join(", ")}"}
         format.html { render action: "edit" }
