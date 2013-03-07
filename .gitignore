@@ -17,3 +17,4 @@ config/database.yml
 *~
 /Apuntes
 /public/uploads/*
+.DS_store
