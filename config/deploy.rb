@@ -34,7 +34,7 @@ namespace :deploy do
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     run "mkdir -p #{shared_path}/config"
-    run "mkdir -p #{shared_path}/db"
+    # run "mkdir -p #{shared_path}/db"
     # run "touch #{shared_path}/db/production.sqlite3"
     # run "touch #{shared_path}/db/production.sqlite3"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
