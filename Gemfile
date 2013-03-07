@@ -49,7 +49,15 @@ gem "ancestry"
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.9'
 
-group :development do
+# Use unicorn as the app server
+gem 'unicorn'
+
+group :development, :test do
   gem "hpricot"
   gem "ruby_parser"
+
+  gem 'capistrano'
+  gem 'rvm-capistrano'
+  gem 'capistrano-unicorn', :require => false
+  gem "annotate"
 end
