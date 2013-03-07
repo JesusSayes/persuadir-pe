@@ -32,7 +32,8 @@ before "deploy", "deploy:check_revision"
 namespace :deploy do
 
   task :setup_config, roles: :app do
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    put File.read("config/nginx.conf"), "#{shared_path}/config/nginx.conf"
+    sudo "ln -nfs #{shared_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     run "mkdir -p #{shared_path}/config"
     # run "mkdir -p #{shared_path}/db"
     # run "touch #{shared_path}/db/production.sqlite3"
