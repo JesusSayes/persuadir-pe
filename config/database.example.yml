@@ -23,8 +23,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: persuadir_production
+  database: persuadir
   pool: 5
-  username: root
-  password: 
+  username: persuadir
+  password: lima1234
   socket: /var/run/mysqld/mysqld.sock

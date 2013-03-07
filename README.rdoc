@@ -14,6 +14,13 @@ sudo apt-get install postfix
 Instalar Mysql
 sudo apt-get install mysql-client mysql-server libmysqlclient-dev
 
+Crear la BD
+  > mysql -u root -p
+  CREATE USER 'persuadir'@'localhost' IDENTIFIED BY 'lima1234';
+  CREATE DATABASE `persuadir` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+  GRANT ALL PRIVILEGES ON `persuadir` . * TO 'persuadir'@'localhost' WITH GRANT OPTION ;
+
+
 Instalar dependencias RVM
 
   > rvm dependencies
