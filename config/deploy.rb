@@ -1,5 +1,5 @@
 set :application, "persuadir-pe"
-set :repository,  "git@github.com:JesusSayes/persuadir-pe.git"
+set :repository,  "git@github.com:ccastillop/persuadir.git"
 
 set :deploy_via, :remote_cache
 set :branch, "master"
@@ -37,7 +37,7 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/db"
     # run "touch #{shared_path}/db/production.sqlite3"
     # run "touch #{shared_path}/db/production.sqlite3"
-    put File.read("config/database.yml"), "#{shared_path}/config/database.yml"
+    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     puts "Now edit the config files in #{shared_path}."
     sudo "service nginx restart"
   end
