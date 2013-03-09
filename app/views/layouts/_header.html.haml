@@ -7,6 +7,7 @@
       .pull-right
         %p= l(Time.now.to_date, :format=>:long).capitalize
     .row-fluid
-      -#= render :partial => "layouts/user_nav"
+      - if user_signed_in? and current_user.admin?
+        = render :partial => "layouts/user_nav"
 .divisor.row-fluid
 %p

@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :description, :title, :parent_id, :link, :position
+  attr_accessible :description, :title, :parent_id, :link, :position, :public
   has_many :workshops
 
   has_ancestry

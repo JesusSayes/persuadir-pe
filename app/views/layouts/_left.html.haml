@@ -5,7 +5,7 @@
     .accordion-body.collapse
       .accordion-inner
 
-  - Page.roots.order(:ancestry, :position).each do |page|
+  - Page.published.roots.order(:ancestry, :position).each do |page|
     .accordion-group
       .accordion-heading{:class=>(request[:controller]=="pages" and params[:id]==page.to_param ? "collapse-active" : nil)}
         - tiene_pages = page.has_children? ? true : false
@@ -21,7 +21,7 @@
       - if tiene_pages
         .accordion-body.collapse{:id=>"collapse#{page.id}"}
           .accordion-inner.tag-children
-            - page.children.order(:ancestry, :position).each do |children_page|
+            - page.children.published.order(:ancestry, :position).each do |children_page|
               - if children_page.link?
                 = link_to "#{children_page.link}" do
                   -# Sólo consideramos el caso de consultants

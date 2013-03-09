@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306044415) do
+ActiveRecord::Schema.define(:version => 20130309155358) do
 
   create_table "archives", :force => true do |t|
     t.string   "archive"
@@ -67,11 +67,12 @@ ActiveRecord::Schema.define(:version => 20130306044415) do
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "ancestry"
     t.string   "link"
     t.integer  "position"
+    t.boolean  "public",      :default => true
   end
 
   add_index "pages", ["ancestry"], :name => "index_tags_on_ancestry"
