@@ -6,7 +6,7 @@ class Page < ActiveRecord::Base
   # acts_as_list scope: [:ancestry]
 
   scope :ordered, lambda{ order(:position)}
-  scope :published, where(:public=>true)
+  scope :published, lambda{ where(:public=>true)}
 
   def to_param
     "#{id}-#{title.parameterize}"
