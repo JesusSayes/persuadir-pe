@@ -32,9 +32,10 @@ before "deploy", "deploy:check_revision"
 namespace :deploy do
 
   task :setup_config, roles: :app do
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    put File.read("config/nginx.conf"), "#{shared_path}/config/nginx.conf"
+    sudo "ln -nfs #{shared_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     run "mkdir -p #{shared_path}/config"
-    run "mkdir -p #{shared_path}/db"
+    # run "mkdir -p #{shared_path}/db"
     # run "touch #{shared_path}/db/production.sqlite3"
     # run "touch #{shared_path}/db/production.sqlite3"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
@@ -45,6 +46,7 @@ namespace :deploy do
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
+    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
   end
 
   desc "Make sure local git is in sync with remote."

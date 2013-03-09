@@ -14,19 +14,28 @@ sudo apt-get install postfix
 Instalar Mysql
 sudo apt-get install mysql-client mysql-server libmysqlclient-dev
 
+Crear la BD
+  > mysql -u root -p
+  CREATE USER 'persuadir'@'localhost' IDENTIFIED BY 'lima1234';
+  CREATE DATABASE `persuadir` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+  GRANT ALL PRIVILEGES ON `persuadir` . * TO 'persuadir'@'localhost' WITH GRANT OPTION ;
+
+
 Instalar dependencias RVM
-Additional Dependencies:
-# For update-system:
-sudo apt-get update
 
-# For rvm:
-sudo apt-get --no-install-recommends install bash curl git patch bzip2
+  > rvm dependencies
+  
+  # For update-system:
+  sudo apt-get update
 
-# For ruby:
-sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
+  # For rvm:
+  sudo apt-get --no-install-recommends install bash curl git patch bzip2
 
-# For jruby:
-sudo apt-get --no-install-recommends install curl g++ openjdk-6-jre-headless
+  # For ruby:
+  sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
+
+  # For jruby:
+  sudo apt-get --no-install-recommends install curl g++ openjdk-6-jre-headless
 
 Lo demás se tiene que hacer con RVM, via cap deploy:setup
 
