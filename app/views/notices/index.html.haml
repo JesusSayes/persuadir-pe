@@ -1,3 +1,5 @@
+- title "Noticias - #{@notices.first.title}"
+- description( truncate_words @notices.first.summary.html_safe)
 %h1 Listado de Noticias - Artículos
 
 = new_tool Notice
@@ -35,7 +37,7 @@
         .date.orange
           = notice.publication_date.strftime("%d-%m-%Y")
         .title
-          = notice.title
+          = link_to "#{notice.title}", notice
         .summary
           %p
             = truncate_words notice.summary.html_safe, 25

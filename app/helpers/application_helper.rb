@@ -66,4 +66,16 @@ module ApplicationHelper
     words = words.try(:html_safe)
   end
 
+  def title (page_title = SEO_TITLE)
+    content_for(:head) {
+      content_tag(:title, [page_title,"Persuadir CIC Perú"].compact.join(" | "))
+    }
+  end
+
+  def description( d= SEO_DESCRIPTION)
+    content_for(:head) {
+      tag(:meta, :name => "description", :content=>d )
+    }
+  end
+
 end

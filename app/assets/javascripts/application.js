@@ -47,7 +47,7 @@ $(function(){
     }
   });
 
-  $(".pagination a").click( function(e){
+  $("#archives .pagination a").click( function(e){
     e.preventDefault();
     pagination(this.href);
   });
