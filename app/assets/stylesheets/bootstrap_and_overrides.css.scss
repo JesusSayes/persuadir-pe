@@ -141,8 +141,8 @@ body{
         }
         .notice-list{
           .notice-date{
-            .fec18px{
-              font-size: 18px;
+            .fec15px{
+              font-size: 15px;
             }
           }
           .notice-image{
@@ -234,7 +234,7 @@ body{
     }
     .accordion-heading .accordion-toggle{
       padding-left: 10px;
-      padding-right: 8px;
+      padding-right: 5px;
       // @include box-shadow(#{ 2px 2px 5px 1px rgba(136,136,136,1)});
       &:hover{
         background-color: #f5a051;

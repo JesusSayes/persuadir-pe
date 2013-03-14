@@ -43,8 +43,9 @@
             = truncate_words notice.summary.html_safe, 25
       %td
         %div
-          Publicado?
-          = tick notice.public if is_user_admin
+          - if is_user_admin
+            Publicado?
+            = tick notice.public
           %p
         %div= user_tools notice, false, {:text=>false}
 

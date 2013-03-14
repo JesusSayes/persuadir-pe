@@ -2,7 +2,7 @@
   .span1.notice-date.pull-left
     - fecha = l(notice.publication_date.to_date, :format=>:short).upcase.split
     = fecha[0]
-    %span.fec18px= fecha[1]
+    %span.fec15px= fecha[2]
   .span2.notice-image.pull-left
     = link_to notice do
       = image_tag notice.image_url(:thumb)
