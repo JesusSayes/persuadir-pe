@@ -3,7 +3,7 @@
   = f.error_notification
 
   .row-fluid
-    .span8
+    .span7
       .form-inputs
         = f.input :title, :label=>"Nombre de la Página"
         = f.input :description, :input_html => {:class=>"tinymce span12"}, :label=>"Contenido de la Página (Incluir título)"
@@ -16,5 +16,5 @@
       .form-actions
         = f.button :submit
       = tinymce
-    .span4
+    .span5
       = render :partial => "layouts/frame_response"

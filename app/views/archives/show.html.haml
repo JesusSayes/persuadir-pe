@@ -3,10 +3,23 @@
   = @archive.description
 =user_tools @archive, false, {:remote=>true}
 %p
-  %b Archive:
-  - if @archive.archive?
-    = image_tag @archive.archive_url(:thumb)
-    = image_tag @archive.archive_url(:medium)
-    = image_tag @archive.archive_url(:larger)
+%b Archivo:
+%br
+- if @archive.archive? and Archive.type_of_file(@archive.archive) == "image"
+  Pequeña
+  = image_tag @archive.archive_url(:thumb)
+  %br
+  Mediana:
+  = image_tag @archive.archive_url(:medium)
+  %br
+  Grande:
+  (reducida)
+  = image_tag @archive.archive_url(:larger)
+- else
+  %b Ruta para link:
+  %br
+  = link_to "#{File.basename(@archive.archive_url)}", @archive.archive_url
+  %p
 
-= link_to 'Back', archives_path, :remote=>true
+%p
+  = link_to 'Back', archives_path, {:class=>"btn btn-primary", :remote=>true}

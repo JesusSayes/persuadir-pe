@@ -36,7 +36,7 @@ class FileUploader < CarrierWave::Uploader::Base
   # end
 
   def extension_white_list
-    %w(jpg jpeg gif png pdf doc docx)
+    %w(jpg jpeg gif png bmp pdf doc docx)
   end
   # Create different versions of your uploaded files:
   version :larger do
