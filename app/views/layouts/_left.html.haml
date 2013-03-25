@@ -29,8 +29,14 @@
                     ="#{children_page.title}"
               - else
                 = link_to children_page do
-                  .item-menu{:class=>(request[:controller]=="pages" and params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
-                    = "#{children_page.title}"
+                  -# .item-menu{:class=>(request[:controller]=="pages" and params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
+                  - if request[:controller]=="pages" || request[:controller]=="home" || request[:controller]=="consultants"
+                    .item-menu{:class=>(params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
+                      = "#{children_page.title}"
+                  - elsif request[:controller]=="workshops" && params[:id]
+                    .item-menu{:class=>(Workshop.find(params[:id]).page.id==children_page.id ? "collapse-active-txt" : nil)}
+                      = "#{children_page.title}"
+
       - else
         .accordion-body.collapse
           .accordion-inner
