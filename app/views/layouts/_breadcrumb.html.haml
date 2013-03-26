@@ -54,6 +54,6 @@
               %span.icon-chevron-right
           - else
             %li
-              = link_to page do
+              = link_to_unless_current page do
                 = t_page[page.to_sym] || this_page.title || this_page.name || this_page
               %span.icon-chevron-right
