@@ -7,7 +7,7 @@ set :ssh_options, { :forward_agent => true }
 set :user, "ccastillo"
 
 set :deploy_to, "/home/#{user}/apps/#{application}"
-set :deploy_via, :remote_cache
+# set :deploy_via, :remote_cache
 set :use_sudo, false
 
 server "www.cristiancastillo.com", :web, :app, :db, primary: true

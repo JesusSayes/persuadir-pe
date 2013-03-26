@@ -12,7 +12,11 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
-    @workshops = @page.workshops
+    if user_signed_in? and current_user.admin?
+      @workshops = @page.workshops
+    else
+      @workshops = @page.workshops.published
+    end
 
     respond_to do |format|
       format.html # show.html.erb

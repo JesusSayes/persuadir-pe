@@ -11,5 +11,7 @@
   - if user_signed_in? and current_user.admin?
     .pull-right
       -# = link_to "Agregar fecha", new_polymorphic_path([workshop, EventDate]), :class=>"btn btn-primary"
+      %b Publicado:
+      = tick(workshop.public)
       = user_tools workshop, false, {:text=>false}
 
