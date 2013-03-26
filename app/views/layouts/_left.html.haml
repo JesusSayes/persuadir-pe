@@ -5,7 +5,7 @@
     .accordion-body.collapse
       .accordion-inner
 
-  - Page.roots.order(:ancestry, :position).each do |page|
+  - Page.published.roots.order(:ancestry, :position).each do |page|
     .accordion-group
       .accordion-heading{:class=>(request[:controller]=="pages" and params[:id]==page.to_param ? "collapse-active" : nil)}
         - tiene_pages = page.has_children? ? true : false
@@ -13,15 +13,14 @@
           = link_to "#collapse#{page.id}", {:class=>"accordion-toggle", :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"} do
             = page.title
             %i.icon-chevron-right.pull-right
+        - elsif page.link?
+          = link_to "#{page.title}", "#{page.link}"
         - else
-          - if page.link?
-            = link_to "#{page.title}", "#{page.link}"
-          - else
-            = link_to "#{page.title}", page, {:class=>"accordion-toggle"} #, :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"}
+          = link_to "#{page.title}", page, {:class=>"accordion-toggle"} #, :"data-toggle"=>"collapse", :"data-parent"=>"collapse#{page.id}"}
       - if tiene_pages
         .accordion-body.collapse{:id=>"collapse#{page.id}"}
           .accordion-inner.tag-children
-            - page.children.order(:ancestry, :position).each do |children_page|
+            - page.children.published.order(:ancestry, :position).each do |children_page|
               - if children_page.link?
                 = link_to "#{children_page.link}" do
                   -# Sólo consideramos el caso de consultants
@@ -29,8 +28,14 @@
                     ="#{children_page.title}"
               - else
                 = link_to children_page do
-                  .item-menu{:class=>(request[:controller]=="pages" and params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
-                    = "#{children_page.title}"
+                  -# .item-menu{:class=>(request[:controller]=="pages" and params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
+                  - if request[:controller]=="pages" || request[:controller]=="home" || request[:controller]=="consultants" || request[:controller]=="notices"
+                    .item-menu{:class=>(params[:id]==children_page.to_param ? "collapse-active-txt" : nil)}
+                      = "#{children_page.title}"
+                  - elsif request[:controller]=="workshops" && params[:id]
+                    .item-menu{:class=>(Workshop.find(params[:id]).page.id==children_page.id ? "collapse-active-txt" : nil)}
+                      = "#{children_page.title}"
+
       - else
         .accordion-body.collapse
           .accordion-inner

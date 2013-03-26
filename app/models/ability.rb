@@ -15,7 +15,6 @@ class Ability
       cannot :index, User
       cannot :index, EventDate
       cannot :index, Image
-      cannot :index, Notice
       cannot :index, Workshop
       cannot [:index, :create], User
     end

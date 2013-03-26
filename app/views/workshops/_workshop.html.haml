@@ -6,7 +6,7 @@
       = link_to workshop do
         = workshop.title.html_safe
     %p
-      = truncate_words workshop.content.html_safe, 12
+      = truncate_words workshop.content.html_safe, 60
 
   - if user_signed_in? and current_user.admin?
     .pull-right

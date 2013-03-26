@@ -1,5 +1,8 @@
-%h1 Listing Pages
-
+%h1 Listado de Páginas
+.alert.alert-info
+  Se encontraron
+  %b= @pages.count
+  páginas
 = new_tool Page
 %br
 
@@ -8,6 +11,7 @@
     %th Order
     %th{:colspan=>2} Title
     %th Description/Link
+    %th Public
     -#%th Articles
     %th
 
@@ -26,7 +30,7 @@
           = link_to "#{truncate_words(page.link, 3)}", page.link
         - else
           = truncate_words page.description.html_safe, 8
-
+      %td= tick page.public
       %td= user_tools page, false, {:text=>false}
     - if page.has_children?
       - page.children.order(:ancestry, :position).each do |children_page|
@@ -45,4 +49,5 @@
               = link_to "#{truncate_words(children_page.link, 3)}", children_page.link
             - else
               = truncate_words children_page.description, 8
+          %td= tick children_page.public
           %td= user_tools children_page, false, {:text=>false}

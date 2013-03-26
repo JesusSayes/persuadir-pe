@@ -1,3 +1,5 @@
+- title "CIC Perú"
+- description "Persuadir - CIC Perú - Negociación, Comunicación estratégica y liderazgo"
 = render :partial => "layouts/carousel"
 
 -# .well.home-well2
@@ -37,7 +39,7 @@
               %i.icon-plus.icon-white
       = render :partial => "notices/notice", :collection => @notices_home
   .span3
-    .social
+    -# .social
       SIGUENOS EN
       %p
       %div
@@ -52,11 +54,18 @@
         = link_to "https://twitter.com/CIC_Cambridge" do
           = image_tag "bt_twitter.jpg"
           Twitter
-    .social
+    -# .social
       NUESTROS CLIENTES
       %p
       = image_tag "polar.png"
 
+    .social
+      = link_to "http://www.cic-peru.com:2095/", :target=>"_blank" do
+        .txt-center
+          INTRANET
+        %p
+        .image-well.pull-left
+          = image_tag "e-interactivo.jpg"
   -# .span3
     .home-servicios
       .home-servicio

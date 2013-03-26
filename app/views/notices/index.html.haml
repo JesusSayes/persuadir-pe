@@ -1,3 +1,6 @@
+- title "Noticias - #{@notices.first.title}"
+- description( truncate_words @notices.first.summary.html_safe)
+= render :partial => 'layouts/breadcrumb'
 %h1 Listado de Noticias - Artículos
 
 = new_tool Notice
@@ -35,14 +38,15 @@
         .date.orange
           = notice.publication_date.strftime("%d-%m-%Y")
         .title
-          = notice.title
+          = link_to "#{notice.title}", notice
         .summary
           %p
             = truncate_words notice.summary.html_safe, 25
       %td
         %div
-          Publicado?
-          = tick notice.public if is_user_admin
+          - if is_user_admin
+            Publicado?
+            = tick notice.public
           %p
         %div= user_tools notice, false, {:text=>false}
 

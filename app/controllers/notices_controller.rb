@@ -5,9 +5,9 @@ class NoticesController < ApplicationController
   # GET /notices.json
   def index
     unless user_signed_in? and current_user.admin?
-      @notices = Notice.paginate :page => params[:page] || 1, :per_page =>2
+      @notices = Notice.paginate :page => params[:page] || 1, :per_page =>5
     else
-      @notices = Notice.published.paginate :page => params[:page] || 1, :per_page =>2
+      @notices = Notice.published.paginate :page => params[:page] || 1, :per_page =>5
     end
 
     respond_to do |format|

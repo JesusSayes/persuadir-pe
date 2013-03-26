@@ -14,10 +14,8 @@
     - if content_for?(:head)
       = yield(:head)
     - else
-      -# %title= "Persuadir | #{SEO_TITLE}"
       %title= "Persuadir | "
-      %meta{name:"description", content:""}
-      -# %meta{name:"description", content:SEO_DESCRIPTION}
+      %meta{name:"description", content:"Persuadir - CIC Perú - Negociación, Comunicación estratégica y liderazgo"}
   %body
     %header
       .container#header

@@ -1,5 +1,8 @@
+- title @notice.title
+- description( truncate_words @notice.summary.html_safe)
 - if user_signed_in? and current_user.admin?
   - administrar = true
+= render :partial => 'layouts/breadcrumb', :locals => {:this_page=>@notice}
 .notice-show
   .orange
     = @notice.publication_date.strftime("%d-%m-%Y")

@@ -1,12 +1,13 @@
 class Page < ActiveRecord::Base
-  attr_accessible :description, :title, :parent_id, :link, :position
+  attr_accessible :description, :title, :parent_id, :link, :position, :public
   has_many :workshops
 
   has_ancestry
   # acts_as_list scope: [:ancestry]
 
   scope :ordered, lambda{ order(:position)}
-  scope :published, where(:public=>true)
+  scope :published, lambda{ where(:public=>true)}
+  scope :with_link, lambda{ where("link != ''")}
 
   def to_param
     "#{id}-#{title.parameterize}"

@@ -1,3 +1,5 @@
+- title "Workshops - #{@workshops.first.title}"
+- description( truncate_words @workshops.first.content.html_safe)
 %h1 Lista de Talleres / Charlas
 
 = new_tool Workshop
@@ -6,7 +8,7 @@
   %tr
     %th Title
     %th Content
-    %th Menu
+    -# %th Menu
     %th Public
     %th
 
@@ -14,7 +16,7 @@
     %tr
       %td= workshop.title
       %td= truncate_words workshop.content.html_safe, 8
-      %td= tick workshop.menu
+      -# %td= tick workshop.menu
       %td= tick workshop.public
       %td= user_tools workshop, false, {"text"=>false}
 

@@ -3,16 +3,18 @@
   = f.error_notification
 
   .row-fluid
-    .span8
+    .span7
       .form-inputs
         = f.input :title, :label=>"Nombre de la Página"
         = f.input :description, :input_html => {:class=>"tinymce span12"}, :label=>"Contenido de la Página (Incluir título)"
         = f.input :link
+        %br
+        = f.input :public
         = f.input :parent_id, :collection=>@page_ancestry
-        = f.input :position, :value => (Page.order(:position).last.position.to_i + 1), :as => :hidden
+        = f.input :position, :input_html => {:value => (Page.order(:position).last.position.to_i + 1)}, :as => :hidden
 
       .form-actions
         = f.button :submit
       = tinymce
-    .span4
+    .span5
       = render :partial => "layouts/frame_response"
