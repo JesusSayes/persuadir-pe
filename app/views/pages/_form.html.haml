@@ -11,7 +11,7 @@
         %br
         = f.input :public
         = f.input :parent_id, :collection=>@page_ancestry
-        = f.input :position, :input_html => {:value => (Page.order(:position).last.position.to_i + 1)}, :as => :hidden
+        = f.input :position, :input_html => {:value => @page.position || (Page.order(:position).last.position.to_i + 1)}, :as => :hidden
 
       .form-actions
         = f.button :submit
