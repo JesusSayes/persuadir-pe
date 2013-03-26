@@ -1,0 +1,59 @@
+- t_page = {:consultants=>"Consultores", :notices=>"Noticias", :workshops=>"Workshops"}
+- controlador = params[:controller]
+- clase = controlador.classify.constantize
+- pages = ["consultants", "notices", "workshops"]
+- ruta = url_for(:params=>false)
+%ul.breadcrumb
+  %li
+    = link_to_unless_current "Home", root_path
+    %span.icon-chevron-right
+  - if controlador == "pages"
+    -# Páginas, en menú, estáticas
+    - this_page.ancestors.each do |page|
+      %li
+        = page.title
+        %span.icon-chevron-right
+    %li
+      = link_to_unless_current "#{this_page.title}", this_page
+  - elsif pages.include?controlador
+    - if clase.column_names.include?"page_id"
+      -# Relacionados - ej. Workshops
+      - page_an = this_page.page || clase.last.page
+      - page_an.ancestors.each do |page_anc|
+        %li
+          - if page_anc.has_children?
+            = page_anc
+          - else
+            = link_to "#{page_anc}", page_anc
+          %span.icon-chevron-right
+      %li
+        = link_to_unless_current "#{page_an}", page_an
+        %span.icon-chevron-right
+      %li
+        = this_page
+    - else
+      -# No Relacionados
+      - pages_with_link = Page.with_link
+      - if pages_with_link.include?ruta
+        -# Linkeados desde el menú
+        - pages_with_link.each do |r|
+          - if r.link == ruta
+            - r.ancestors.each do |page|
+              %li
+                = page
+                %span.icon-chevron-right
+            %li= r
+          - else
+            gg
+      - else
+        -# Sin link en el menú - Noticias
+        - ruta.split("/").reject(&:empty?).each do |page|
+          - if (controlador == page)
+            %li
+              = link_to_unless_current t_page[page.to_sym], "/#{page}"
+              %span.icon-chevron-right
+          - else
+            %li
+              = link_to page do
+                = t_page[page.to_sym] || this_page.title || this_page.name || this_page
+              %span.icon-chevron-right

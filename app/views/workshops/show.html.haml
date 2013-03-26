@@ -2,13 +2,14 @@
 - description( truncate_words @workshop.content.html_safe)
 -# .banner-article
   -# = @workshop.summary.html_safe
+= render :partial => 'layouts/breadcrumb', :locals => {:this_page=>@workshop}
 .body-article
   %p
     %h1= @workshop.title.html_safe
   %p
     = @workshop.content.html_safe
 
-- if user_signed_in? and current_user.admin?
+-# - if user_signed_in? and current_user.admin?
   = link_to "Agregar fecha", new_polymorphic_path([@workshop, EventDate]), :class=>"btn btn-primary"
 
 = user_tools @workshop, false

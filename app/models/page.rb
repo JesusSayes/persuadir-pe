@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
 
   scope :ordered, lambda{ order(:position)}
   scope :published, lambda{ where(:public=>true)}
+  scope :with_link, lambda{ where("link != ''")}
 
   def to_param
     "#{id}-#{title.parameterize}"

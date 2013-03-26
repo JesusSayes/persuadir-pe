@@ -1,5 +1,6 @@
 - title "Noticias - #{@notices.first.title}"
 - description( truncate_words @notices.first.summary.html_safe)
+= render :partial => 'layouts/breadcrumb'
 %h1 Listado de Noticias - Artículos
 
 = new_tool Notice

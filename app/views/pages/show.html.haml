@@ -1,7 +1,7 @@
 - title @page.title
 - description( truncate_words @page.description.html_safe)
 .banner-article
-
+  = render :partial => 'layouts/breadcrumb', :locals => {:this_page=>@page}
 .body-article
   -# %p
     %h1= @page.title.html_safe
